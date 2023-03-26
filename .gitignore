@@ -105,3 +105,6 @@ $RECYCLE.BIN/
 *.lnk
 
 # End of https://www.toptal.com/developers/gitignore/api/windows,linux,macos,java
+
+#ale archivos basura de google drive
+desktop.ini
