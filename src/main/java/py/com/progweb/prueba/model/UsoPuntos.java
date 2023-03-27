@@ -1,8 +1,11 @@
 package py.com.progweb.prueba.model;
 
+import lombok.Data;
+
 import javax.persistence.*;
 
 @Entity
+@Data
 @Table(name = "usoPuntos")
 public class UsoPuntos {
     @Id
@@ -22,29 +25,5 @@ public class UsoPuntos {
 
     public UsoPuntos(){
 
-    }
-
-    public Integer getIdUsoPuntos() {
-        return idUsoPuntos;
-    }
-
-    public void setIdUsoPuntos(Integer idUsoPuntos) {
-        this.idUsoPuntos = idUsoPuntos;
-    }
-
-    public String getDescripcion() {
-        return descripcion;
-    }
-
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
-    }
-
-    public Integer getPuntosRequeridos() {
-        return puntosRequeridos;
-    }
-
-    public void setPuntosRequeridos(Integer puntosRequeridos) {
-        this.puntosRequeridos = puntosRequeridos;
     }
 }

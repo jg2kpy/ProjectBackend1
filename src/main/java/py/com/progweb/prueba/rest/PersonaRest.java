@@ -1,6 +1,7 @@
 package py.com.progweb.prueba.rest;
 
 import py.com.progweb.prueba.ejb.PersonaDAO;
+import py.com.progweb.prueba.model.Cliente;
 import py.com.progweb.prueba.model.Persona;
 
 import javax.enterprise.context.RequestScoped;
