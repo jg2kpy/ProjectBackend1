@@ -1,8 +1,11 @@
 package py.com.progweb.prueba.model;
 
+import lombok.Data;
+
 import javax.persistence.*;
 
 @Entity
+@Data
 @Table(name = "reglasAsigPuntos")
 public class ReglasAsigPuntos {
     @Id
@@ -26,33 +29,5 @@ public class ReglasAsigPuntos {
 
     public ReglasAsigPuntos(){
 
-    }
-
-    public Integer getIdReglasAsigPuntos() {
-        return idReglasAsigPuntos;
-    }
-
-    public void setIdReglasAsigPuntos(Integer idReglasAsigPuntos) {
-        this.idReglasAsigPuntos = idReglasAsigPuntos;
-    }
-
-    public void setLimiteInferior(Integer limiteInferior) {
-        this.limiteInferior = limiteInferior;
-    }
-
-    public Integer getLimiteSuperior() {
-        return limiteSuperior;
-    }
-
-    public void setLimiteSuperior(Integer limiteSuperior) {
-        this.limiteSuperior = limiteSuperior;
-    }
-
-    public Integer getMontoEquivalencia() {
-        return limiteSuperior;
-    }
-
-    public void setMontoEquivalencia(Integer montoEquivalencia) {
-        this.montoEquivalencia = montoEquivalencia;
     }
 }
