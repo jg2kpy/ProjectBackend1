@@ -23,14 +23,14 @@ CREATE TABLE reglasAsigPuntos (
 
 CREATE SEQUENCE reglasAsigPuntos_sec START WITH 1 INCREMENT BY 1;
 
---uso puntos
-CREATE TABLE usoPuntos (
-    id_usoPuntos INTEGER PRIMARY KEY,
+--concepto puntos
+CREATE TABLE conceptoPuntos (
+    id_conceptoPuntos INTEGER PRIMARY KEY,
     descripcion VARCHAR(200) NOT NULL,
     puntos_requeridos INTEGER NOT NULL
 );
 
-CREATE SEQUENCE usoPuntos_sec START WITH 1 INCREMENT BY 1;
+CREATE SEQUENCE conceptoPuntos_sec START WITH 1 INCREMENT BY 1;
 
 --bolsa de puntos
 CREATE TABLE bolsaPuntos (

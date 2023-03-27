@@ -6,14 +6,14 @@ import javax.persistence.*;
 
 @Entity
 @Data
-@Table(name = "usoPuntos")
-public class UsoPuntos {
+@Table(name = "conceptoPuntos")
+public class ConceptoPuntos {
     @Id
     @Basic(optional = false)
-    @Column(name = "id_usoPuntos")
-    @GeneratedValue(generator="usoPuntosSec")
-    @SequenceGenerator(name="usoPuntosSec",sequenceName="usoPuntos_sec",allocationSize=0)
-    private Integer idUsoPuntos;
+    @Column(name = "id_conceptoPuntos")
+    @GeneratedValue(generator="conceptoPuntosSec")
+    @SequenceGenerator(name="conceptoPuntosSec",sequenceName="conceptoPuntos_sec",allocationSize=0)
+    private Integer idConceptoPuntos;
 
     @Basic(optional = false)
     @Column(name = "descripcion",length = 200)
@@ -23,7 +23,7 @@ public class UsoPuntos {
     @Column(name = "puntos_requeridos")
     private Integer puntosRequeridos;
 
-    public UsoPuntos(){
+    public ConceptoPuntos(){
 
     }
 }
