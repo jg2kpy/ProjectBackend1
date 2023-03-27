@@ -19,6 +19,7 @@ public class Agenda {
     @Column(name = "fecha")
     @Temporal(TemporalType.DATE)
     private Date fecha;
+
     @ManyToOne(optional = false)
     @JoinColumn(name = "id_persona",referencedColumnName = "id_persona")
     private Persona idPersona;
