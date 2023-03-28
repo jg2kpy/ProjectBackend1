@@ -1,15 +1,16 @@
 -- cliente
 CREATE TABLE cliente (
-    id_cliente INTEGER PRIMARY KEY,
-    nombre VARCHAR(50) NOT NULL,
-    apellido VARCHAR(50) NOT NULL,
-    nro_documento VARCHAR(50) NOT NULL,
-    tipo_documento VARCHAR(50) NOT NULL,
-    nacionalidad VARCHAR(50) NOT NULL,
-    email VARCHAR(50) NOT NULL,
-    telefono VARCHAR(50) NOT NULL,
-    fecha_nacimiento DATE NOT NULL
+     id_cliente SERIAL PRIMARY KEY,
+     nombre VARCHAR(50) NOT NULL,
+     apellido VARCHAR(50) NOT NULL,
+     nro_documento VARCHAR(50) NOT NULL,
+     tipo_documento VARCHAR(50) NOT NULL,
+     nacionalidad VARCHAR(50) NOT NULL,
+     email VARCHAR(50) NOT NULL,
+     telefono VARCHAR(50) NOT NULL,
+     fecha_nacimiento DATE
 );
+
 
 CREATE SEQUENCE cliente_sec START WITH 1 INCREMENT BY 1;
 
