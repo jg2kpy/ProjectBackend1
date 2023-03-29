@@ -77,10 +77,10 @@ CREATE TABLE public.usoPuntosDetalle (
 CREATE SEQUENCE public.usoPuntosDetalle_sec;
 
 --vencimiento de puntos
-CREATE TABLE public.vecimientoPuntos (
-                                         id_VecimientoPuntos INTEGER PRIMARY KEY,
-                                         fecha_inicio_validez DATE NOT NULL,
-                                         fecha_fin_validez DATE NOT NULL,
-                                         dias_duracion INTEGER NOT NULL
+CREATE TABLE public.vencimientoPuntos (
+         id_VencimientoPuntos INTEGER PRIMARY KEY,
+         fecha_inicio_validez DATE NOT NULL,
+         fecha_fin_validez DATE NOT NULL,
+         dias_duracion INTEGER NOT NULL
 );
-CREATE SEQUENCE public.vecimientoPuntos_sec;
+CREATE SEQUENCE public.vencimientoPuntos_sec;
