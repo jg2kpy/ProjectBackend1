@@ -1,6 +1,7 @@
 package py.com.progweb.prueba.ejb;
 
 import py.com.progweb.prueba.model.BolsaPuntos;
+import py.com.progweb.prueba.model.ConceptoPuntos;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -22,6 +23,8 @@ public class BolsaPuntosDAO {
     VencimientoPuntosDAO vencimientoPuntosDAO;
     @Inject
     ReglasAsigPuntosDAO reglasAsigPuntosDAO;
+    @Inject
+    ConceptoPuntosDAO conceptoPuntosDAO;
 
     public BolsaPuntos cargarPuntos(Integer idCliente, Integer monto){
         Date fechaDeHoy = new Date();
@@ -43,6 +46,15 @@ public class BolsaPuntosDAO {
         retorno.setMontoOperacion(monto);
         em.persist(retorno);//Guarda en la base de datos
         return retorno;
+    }
+
+    public BolsaPuntos usarPuntos(Integer idCliente, Integer idConceptoPuntos){
+
+        ConceptoPuntos concepto = conceptoPuntosDAO.obtenerConceptoPuntoPorId(idConceptoPuntos)
+        int puntajeDescontar = concepto.getPuntosRequeridos();
+
+        Date fechaDeHoy = new Date();
+        return null;
     }
 
 }

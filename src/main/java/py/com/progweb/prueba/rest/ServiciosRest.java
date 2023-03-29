@@ -1,6 +1,7 @@
 package py.com.progweb.prueba.rest;
 
 import py.com.progweb.prueba.DTO.BolsaPuntosDTO;
+import py.com.progweb.prueba.DTO.UsoPuntosDTO;
 import py.com.progweb.prueba.ejb.BolsaPuntosDAO;
 import py.com.progweb.prueba.model.BolsaPuntos;
 import py.com.progweb.prueba.model.ReglasAsigPuntos;
@@ -34,6 +35,13 @@ public class ServiciosRest {
     @Path("/carga-puntos")
     public Response agregar(BolsaPuntosDTO bolsaPuntosDTO) {
         BolsaPuntos retorno = bolsaPuntosDAO.cargarPuntos(bolsaPuntosDTO.idCliente,bolsaPuntosDTO.monto);
+        return Response.ok(retorno).build();
+    }
+
+    @POST
+    @Path("/uso-puntos")
+    public Response agregar(UsoPuntosDTO usoPuntosDTO) {
+        BolsaPuntos retorno = bolsaPuntosDAO.usarPuntos(usoPuntosDTO.idCliente,usoPuntosDTO.idConceptoPuntos);
         return Response.ok(retorno).build();
     }
 
