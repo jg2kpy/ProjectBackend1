@@ -31,8 +31,36 @@ public class VencimientoPuntos {
     @Column(name = "dias_duracion")
     private Integer diasDuracion;
 
+    public Integer getIdVencimientoPuntos() {
+        return idVencimientoPuntos;
+    }
+
     public void setIdVencimientoPuntos(Integer idVencimientoPuntos) {
         this.idVencimientoPuntos = idVencimientoPuntos;
+    }
+
+    public Date getFechaInicioValidez() {
+        return fechaInicioValidez;
+    }
+
+    public void setFechaInicioValidez(Date fechaInicioValidez) {
+        this.fechaInicioValidez = fechaInicioValidez;
+    }
+
+    public Date getFechaFinValidez() {
+        return fechaFinValidez;
+    }
+
+    public void setFechaFinValidez(Date fechaFinValidez) {
+        this.fechaFinValidez = fechaFinValidez;
+    }
+
+    public Integer getDiasDuracion() {
+        return diasDuracion;
+    }
+
+    public void setDiasDuracion(Integer diasDuracion) {
+        this.diasDuracion = diasDuracion;
     }
 
     public VencimientoPuntos() {
