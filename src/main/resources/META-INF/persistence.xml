@@ -6,5 +6,8 @@
     <!-- The datasource is deployed as ${ds-deployment-location}, you
          can find it in the source at postgres_local-ds.xml -->
     <jta-data-source>java:jboss/datasources/prueba</jta-data-source>
+    <class>py.com.progweb.prueba.model.ReglasAsigPuntos</class>
+    <class>py.com.progweb.prueba.model.BolsaPuntos</class>
+    <class>py.com.progweb.prueba.model.Cliente</class>
   </persistence-unit>
 </persistence>

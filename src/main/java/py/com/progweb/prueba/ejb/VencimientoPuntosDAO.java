@@ -5,10 +5,12 @@ import py.com.progweb.prueba.model.VencimientoPuntos;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
+import java.util.Date;
 import java.util.List;
 
 @Stateless
@@ -40,6 +42,12 @@ public class VencimientoPuntosDAO {
 
     public VencimientoPuntos obtenerVencimientoPuntosPorId(Integer id) {
         return em.find(VencimientoPuntos.class, id);
+    }
+
+    public int obtenerDiasDuracionPorFecha(Date fecha){
+        Query query = em.createQuery("SELECT t.diasDuracion FROM VencimientoPuntos t WHERE t.fechaInicioValidez < :fecha AND t.fechaFinValidez > :fecha");
+        query.setParameter("fecha", fecha);
+        return (int) query.getFirstResult();
     }
 
 }

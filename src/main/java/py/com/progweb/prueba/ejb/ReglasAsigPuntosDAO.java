@@ -5,10 +5,12 @@ import py.com.progweb.prueba.model.ReglasAsigPuntos;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
+import java.util.Date;
 import java.util.List;
 
 @Stateless
@@ -41,5 +43,13 @@ public class ReglasAsigPuntosDAO {
 
     public ReglasAsigPuntos obtenerReglasAsigPuntosPorId(Integer id) {
         return em.find(ReglasAsigPuntos.class, id);
+    }
+
+    public int obtenerPuntosPorMonto(int monto){
+        Query query = em.createQuery("SELECT rap.montoEquivalencia FROM ReglasAsigPuntos rap WHERE rap.limiteInferior < :monto AND rap.limiteSuperior > :monto");
+        query.setParameter("monto", monto);
+        System.out.println("HOLAAAAAAA" + query.getFirstResult());
+        int montoEquivalencia = (int) query.getFirstResult();
+        return monto/montoEquivalencia;
     }
 }

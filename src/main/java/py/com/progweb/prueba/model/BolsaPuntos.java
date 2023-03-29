@@ -46,6 +46,70 @@ public class BolsaPuntos {
     @Column(name = "monto_operacion")
     private Integer montoOperacion;
 
+    public Integer getIdBolsaPuntos() {
+        return idBolsaPuntos;
+    }
+
+    public void setIdBolsaPuntos(Integer idBolsaPuntos) {
+        this.idBolsaPuntos = idBolsaPuntos;
+    }
+
+    public Cliente getIdCliente() {
+        return idCliente;
+    }
+
+    public void setIdCliente(Cliente idCliente) {
+        this.idCliente = idCliente;
+    }
+
+    public Date getFechaAsignacion() {
+        return fechaAsignacion;
+    }
+
+    public void setFechaAsignacion(Date fechaAsignacion) {
+        this.fechaAsignacion = fechaAsignacion;
+    }
+
+    public Date getFechaCaducidad() {
+        return fechaCaducidad;
+    }
+
+    public void setFechaCaducidad(Date fechaCaducidad) {
+        this.fechaCaducidad = fechaCaducidad;
+    }
+
+    public Integer getPuntajeAsignado() {
+        return puntajeAsignado;
+    }
+
+    public void setPuntajeAsignado(Integer puntajeAsignado) {
+        this.puntajeAsignado = puntajeAsignado;
+    }
+
+    public Integer getPuntajeUtilizado() {
+        return puntajeUtilizado;
+    }
+
+    public void setPuntajeUtilizado(Integer puntajeUtilizado) {
+        this.puntajeUtilizado = puntajeUtilizado;
+    }
+
+    public Integer getSaldoPuntos() {
+        return saldoPuntos;
+    }
+
+    public void setSaldoPuntos(Integer saldoPuntos) {
+        this.saldoPuntos = saldoPuntos;
+    }
+
+    public Integer getMontoOperacion() {
+        return montoOperacion;
+    }
+
+    public void setMontoOperacion(Integer montoOperacion) {
+        this.montoOperacion = montoOperacion;
+    }
+
     public BolsaPuntos(){
 
     }
