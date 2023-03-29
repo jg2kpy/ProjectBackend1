@@ -22,12 +22,12 @@ public class BolsaPuntos {
 
     @Basic(optional = false)
     @Column(name = "fecha_asignacion")
-    @Temporal(TemporalType.TIMESTAMP)
+    @Temporal(TemporalType.DATE)
     private Date fechaAsignacion;
 
     @Basic(optional = false)
     @Column(name = "fecha_caducidad")
-    @Temporal(TemporalType.TIMESTAMP)
+    @Temporal(TemporalType.DATE)
     private Date fechaCaducidad;
 
     @Basic(optional = false)

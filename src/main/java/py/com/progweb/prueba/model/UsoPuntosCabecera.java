@@ -26,7 +26,7 @@ public class UsoPuntosCabecera {
 
     @Basic(optional = false)
     @Column(name = "fecha")
-    @Temporal(TemporalType.TIMESTAMP)
+    @Temporal(TemporalType.DATE)
     private Date fecha;
 
     @ManyToOne(optional = false)
