@@ -48,8 +48,7 @@ public class ReglasAsigPuntosDAO {
     public int obtenerPuntosPorMonto(int monto){
         Query query = em.createQuery("SELECT rap.montoEquivalencia FROM ReglasAsigPuntos rap WHERE rap.limiteInferior < :monto AND rap.limiteSuperior > :monto");
         query.setParameter("monto", monto);
-        System.out.println("HOLAAAAAAA" + query.getFirstResult());
-        int montoEquivalencia = (int) query.getFirstResult();
+        int montoEquivalencia = (int) query.getResultList().get(0);
         return monto/montoEquivalencia;
     }
 }

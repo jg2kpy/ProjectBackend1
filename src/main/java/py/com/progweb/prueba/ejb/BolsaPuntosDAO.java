@@ -23,7 +23,7 @@ public class BolsaPuntosDAO {
     @Inject
     ReglasAsigPuntosDAO reglasAsigPuntosDAO;
 
-    public BolsaPuntos cargarPuntos(int idCliente, int monto){
+    public BolsaPuntos cargarPuntos(Integer idCliente, Integer monto){
         Date fechaDeHoy = new Date();
 
         BolsaPuntos retorno = new BolsaPuntos();
@@ -35,8 +35,6 @@ public class BolsaPuntosDAO {
         calendario.setTime(new Date());
         calendario.add(Calendar.DATE, diasDuracion);
         retorno.setFechaCaducidad(calendario.getTime());
-
-        System.out.println(retorno.getFechaCaducidad());
 
         retorno.setPuntajeAsignado(reglasAsigPuntosDAO.obtenerPuntosPorMonto(monto));
 

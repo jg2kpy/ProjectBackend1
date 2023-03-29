@@ -47,7 +47,7 @@ public class VencimientoPuntosDAO {
     public int obtenerDiasDuracionPorFecha(Date fecha){
         Query query = em.createQuery("SELECT t.diasDuracion FROM VencimientoPuntos t WHERE t.fechaInicioValidez < :fecha AND t.fechaFinValidez > :fecha");
         query.setParameter("fecha", fecha);
-        return (int) query.getFirstResult();
+        return (int) query.getResultList().get(0);
     }
 
 }
