@@ -6,11 +6,11 @@ import javax.persistence.*;
 
 @Entity
 @Data
-@Table(name = "reglasAsigPuntos")
+@Table(name = "reglasasigpuntos")
 public class ReglasAsigPuntos {
     @Id
     @Basic(optional = false)
-    @Column(name = "id_reglasAsigPuntos")
+    @Column(name = "id_reglasasigpuntos")
     @GeneratedValue(generator="reglasAsigPuntosSec")
     @SequenceGenerator(name="reglasAsigPuntosSec",sequenceName="reglasAsigPuntos_sec",allocationSize=0)
     private Integer idReglasAsigPuntos;
@@ -26,6 +26,42 @@ public class ReglasAsigPuntos {
     @Basic(optional = false)
     @Column(name = "monto_equivalencia")
     private Integer montoEquivalencia;
+
+    // Métodos getter y setter para idReglasAsigPuntos
+    public Integer getIdReglasAsigPuntos() {
+        return idReglasAsigPuntos;
+    }
+
+    public void setIdReglasAsigPuntos(Integer idReglasAsigPuntos) {
+        this.idReglasAsigPuntos = idReglasAsigPuntos;
+    }
+
+    // Métodos getter y setter para limiteInferior
+    public Integer getLimiteInferior() {
+        return limiteInferior;
+    }
+
+    public void setLimiteInferior(Integer limiteInferior) {
+        this.limiteInferior = limiteInferior;
+    }
+
+    // Métodos getter y setter para limiteSuperior
+    public Integer getLimiteSuperior() {
+        return limiteSuperior;
+    }
+
+    public void setLimiteSuperior(Integer limiteSuperior) {
+        this.limiteSuperior = limiteSuperior;
+    }
+
+    // Métodos getter y setter para montoEquivalencia
+    public Integer getMontoEquivalencia() {
+        return montoEquivalencia;
+    }
+
+    public void setMontoEquivalencia(Integer montoEquivalencia) {
+        this.montoEquivalencia = montoEquivalencia;
+    }
 
     public ReglasAsigPuntos(){
 
