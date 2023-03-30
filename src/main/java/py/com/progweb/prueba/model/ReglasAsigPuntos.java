@@ -11,8 +11,8 @@ public class ReglasAsigPuntos {
     @Id
     @Basic(optional = false)
     @Column(name = "id_reglasasigpuntos")
-    @GeneratedValue(generator="reglasAsigPuntosSec")
-    @SequenceGenerator(name="reglasAsigPuntosSec",sequenceName="reglasAsigPuntos_sec",allocationSize=0)
+    @GeneratedValue(generator = "reglasAsigPuntosSec")
+    @SequenceGenerator(name = "reglasAsigPuntosSec", sequenceName = "reglasAsigPuntos_sec", allocationSize = 0)
     private Integer idReglasAsigPuntos;
 
     @Basic(optional = false)
@@ -26,6 +26,10 @@ public class ReglasAsigPuntos {
     @Basic(optional = false)
     @Column(name = "monto_equivalencia")
     private Integer montoEquivalencia;
+
+    public ReglasAsigPuntos() {
+
+    }
 
     // Métodos getter y setter para idReglasAsigPuntos
     public Integer getIdReglasAsigPuntos() {
@@ -61,9 +65,5 @@ public class ReglasAsigPuntos {
 
     public void setMontoEquivalencia(Integer montoEquivalencia) {
         this.montoEquivalencia = montoEquivalencia;
-    }
-
-    public ReglasAsigPuntos(){
-
     }
 }

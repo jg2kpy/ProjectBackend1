@@ -5,6 +5,7 @@ import py.com.progweb.prueba.model.ReglasAsigPuntos;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
@@ -13,7 +14,7 @@ import java.util.List;
 
 @Stateless
 public class ReglasAsigPuntosDAO {
-    @PersistenceContext(unitName="pruebaPU")
+    @PersistenceContext(unitName = "pruebaPU")
     private EntityManager em;
 
     //eesta anotacion es cuando requerimos que sea atomico el metodo
@@ -41,5 +42,12 @@ public class ReglasAsigPuntosDAO {
 
     public ReglasAsigPuntos obtenerReglasAsigPuntosPorId(Integer id) {
         return em.find(ReglasAsigPuntos.class, id);
+    }
+
+    public int obtenerPuntosPorMonto(int monto) {
+        Query query = em.createQuery("SELECT rap.montoEquivalencia FROM ReglasAsigPuntos rap WHERE rap.limiteInferior < :monto AND rap.limiteSuperior > :monto");
+        query.setParameter("monto", monto);
+        int montoEquivalencia = (int) query.getResultList().get(0);
+        return monto / montoEquivalencia;
     }
 }
