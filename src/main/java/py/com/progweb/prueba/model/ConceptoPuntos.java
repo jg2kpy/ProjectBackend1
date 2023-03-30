@@ -11,17 +11,21 @@ public class ConceptoPuntos {
     @Id
     @Basic(optional = false)
     @Column(name = "id_conceptopuntos")
-    @GeneratedValue(generator="conceptoPuntosSec")
-    @SequenceGenerator(name="conceptoPuntosSec",sequenceName="conceptoPuntos_sec",allocationSize=0)
+    @GeneratedValue(generator = "conceptoPuntosSec")
+    @SequenceGenerator(name = "conceptoPuntosSec", sequenceName = "conceptoPuntos_sec", allocationSize = 0)
     private Integer idConceptoPuntos;
 
     @Basic(optional = false)
-    @Column(name = "descripcion",length = 200)
+    @Column(name = "descripcion", length = 200)
     private String descripcion;
 
     @Basic(optional = false)
     @Column(name = "puntos_requeridos")
     private Integer puntosRequeridos;
+
+    public ConceptoPuntos() {
+
+    }
 
     // Métodos getter y setter para idConceptoPuntos
     public Integer getIdConceptoPuntos() {
@@ -48,9 +52,5 @@ public class ConceptoPuntos {
 
     public void setPuntosRequeridos(Integer puntosRequeridos) {
         this.puntosRequeridos = puntosRequeridos;
-    }
-
-    public ConceptoPuntos(){
-
     }
 }

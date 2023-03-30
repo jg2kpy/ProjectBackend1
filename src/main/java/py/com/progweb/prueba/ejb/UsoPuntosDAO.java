@@ -9,7 +9,7 @@ import javax.persistence.PersistenceContext;
 
 @Stateless
 public class UsoPuntosDAO {
-    @PersistenceContext(unitName="pruebaPU")
+    @PersistenceContext(unitName = "pruebaPU")
     private EntityManager em;
 
     public void crearUsoPuntosCabecera(UsoPuntosCabecera usoPuntosCabecera) {

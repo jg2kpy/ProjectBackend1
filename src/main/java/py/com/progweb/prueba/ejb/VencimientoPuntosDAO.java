@@ -16,7 +16,7 @@ import java.util.List;
 @Stateless
 public class VencimientoPuntosDAO {
 
-    @PersistenceContext(unitName="pruebaPU")
+    @PersistenceContext(unitName = "pruebaPU")
     private EntityManager em;
 
     public void crearVencimientoPuntos(VencimientoPuntos vencimientoPuntos) {
@@ -44,7 +44,7 @@ public class VencimientoPuntosDAO {
         return em.find(VencimientoPuntos.class, id);
     }
 
-    public int obtenerDiasDuracionPorFecha(Date fecha){
+    public int obtenerDiasDuracionPorFecha(Date fecha) {
         Query query = em.createQuery("SELECT t.diasDuracion FROM VencimientoPuntos t WHERE t.fechaInicioValidez < :fecha AND t.fechaFinValidez > :fecha");
         query.setParameter("fecha", fecha);
         return (int) query.getResultList().get(0);

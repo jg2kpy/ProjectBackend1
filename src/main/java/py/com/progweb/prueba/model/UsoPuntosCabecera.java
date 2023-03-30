@@ -12,12 +12,12 @@ public class UsoPuntosCabecera {
     @Id
     @Basic(optional = false)
     @Column(name = "id_usoPuntosCabecera")
-    @GeneratedValue(generator="usoPuntosCabeceraSec")
-    @SequenceGenerator(name="usoPuntosCabeceraSec",sequenceName="usoPuntosCabecera_sec",allocationSize=0)
+    @GeneratedValue(generator = "usoPuntosCabeceraSec")
+    @SequenceGenerator(name = "usoPuntosCabeceraSec", sequenceName = "usoPuntosCabecera_sec", allocationSize = 0)
     private Integer idUsoPuntosCabecera;
 
     @ManyToOne(optional = false)
-    @JoinColumn(name = "id_cliente",referencedColumnName = "id_cliente")
+    @JoinColumn(name = "id_cliente", referencedColumnName = "id_cliente")
     private Cliente idCliente;
 
     @Basic(optional = false)
@@ -30,11 +30,18 @@ public class UsoPuntosCabecera {
     private Date fecha;
 
     @ManyToOne(optional = false)
-    @JoinColumn(name = "id_conceptoPuntos",referencedColumnName = "id_conceptoPuntos")
+    @JoinColumn(name = "id_conceptoPuntos", referencedColumnName = "id_conceptoPuntos")
     private ConceptoPuntos idConceptoPuntos;
 
-    public UsoPuntosCabecera(){
+    public UsoPuntosCabecera() {
 
+    }
+
+    public UsoPuntosCabecera(Cliente idCliente, Integer puntajeUtilizado, Date fecha, ConceptoPuntos idConceptoPuntos) {
+        this.idCliente = idCliente;
+        this.puntajeUtilizado = puntajeUtilizado;
+        this.fecha = fecha;
+        this.idConceptoPuntos = idConceptoPuntos;
     }
 
     public Integer getIdUsoPuntosCabecera() {
@@ -74,13 +81,6 @@ public class UsoPuntosCabecera {
     }
 
     public void setIdConceptoPuntos(ConceptoPuntos idConceptoPuntos) {
-        this.idConceptoPuntos = idConceptoPuntos;
-    }
-
-    public UsoPuntosCabecera(Cliente idCliente, Integer puntajeUtilizado, Date fecha, ConceptoPuntos idConceptoPuntos) {
-        this.idCliente = idCliente;
-        this.puntajeUtilizado = puntajeUtilizado;
-        this.fecha = fecha;
         this.idConceptoPuntos = idConceptoPuntos;
     }
 }

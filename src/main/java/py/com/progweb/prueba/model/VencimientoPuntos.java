@@ -1,6 +1,5 @@
 package py.com.progweb.prueba.model;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -13,8 +12,8 @@ public class VencimientoPuntos {
     @Id
     @Basic(optional = false)
     @Column(name = "id_VencimientoPuntos")
-    @GeneratedValue(generator="vencimientoPuntos_sec")
-    @SequenceGenerator(name="vencimientoPuntos_sec",sequenceName="vencimientoPuntos_sec",allocationSize=0)
+    @GeneratedValue(generator = "vencimientoPuntos_sec")
+    @SequenceGenerator(name = "vencimientoPuntos_sec", sequenceName = "vencimientoPuntos_sec", allocationSize = 0)
     private Integer idVencimientoPuntos;
 
     @Basic(optional = false)
@@ -30,6 +29,10 @@ public class VencimientoPuntos {
     @Basic(optional = false)
     @Column(name = "dias_duracion")
     private Integer diasDuracion;
+
+    public VencimientoPuntos() {
+
+    }
 
     public Integer getIdVencimientoPuntos() {
         return idVencimientoPuntos;
@@ -61,9 +64,5 @@ public class VencimientoPuntos {
 
     public void setDiasDuracion(Integer diasDuracion) {
         this.diasDuracion = diasDuracion;
-    }
-
-    public VencimientoPuntos() {
-
     }
 }

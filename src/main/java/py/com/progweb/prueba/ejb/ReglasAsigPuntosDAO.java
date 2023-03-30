@@ -10,12 +10,11 @@ import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
-import java.util.Date;
 import java.util.List;
 
 @Stateless
 public class ReglasAsigPuntosDAO {
-    @PersistenceContext(unitName="pruebaPU")
+    @PersistenceContext(unitName = "pruebaPU")
     private EntityManager em;
 
     //eesta anotacion es cuando requerimos que sea atomico el metodo
@@ -45,10 +44,10 @@ public class ReglasAsigPuntosDAO {
         return em.find(ReglasAsigPuntos.class, id);
     }
 
-    public int obtenerPuntosPorMonto(int monto){
+    public int obtenerPuntosPorMonto(int monto) {
         Query query = em.createQuery("SELECT rap.montoEquivalencia FROM ReglasAsigPuntos rap WHERE rap.limiteInferior < :monto AND rap.limiteSuperior > :monto");
         query.setParameter("monto", monto);
         int montoEquivalencia = (int) query.getResultList().get(0);
-        return monto/montoEquivalencia;
+        return monto / montoEquivalencia;
     }
 }

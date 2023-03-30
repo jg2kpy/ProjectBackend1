@@ -2,6 +2,7 @@ package py.com.progweb.prueba.model;
 
 
 import lombok.Data;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -12,12 +13,12 @@ public class BolsaPuntos {
     @Id
     @Basic(optional = false)
     @Column(name = "id_bolsaPuntos")
-    @GeneratedValue(generator="bolsaPuntosSec")
-    @SequenceGenerator(name="bolsaPuntosSec",sequenceName="bolsaPuntos_sec",allocationSize=0)
+    @GeneratedValue(generator = "bolsaPuntosSec")
+    @SequenceGenerator(name = "bolsaPuntosSec", sequenceName = "bolsaPuntos_sec", allocationSize = 0)
     private Integer idBolsaPuntos;
 
     @ManyToOne(optional = false)
-    @JoinColumn(name = "id_cliente",referencedColumnName = "id_cliente")
+    @JoinColumn(name = "id_cliente", referencedColumnName = "id_cliente")
     private Cliente idCliente;
 
     @Basic(optional = false)
@@ -45,6 +46,10 @@ public class BolsaPuntos {
     @Basic(optional = false)
     @Column(name = "monto_operacion")
     private Integer montoOperacion;
+
+    public BolsaPuntos() {
+
+    }
 
     public Integer getIdBolsaPuntos() {
         return idBolsaPuntos;
@@ -108,9 +113,5 @@ public class BolsaPuntos {
 
     public void setMontoOperacion(Integer montoOperacion) {
         this.montoOperacion = montoOperacion;
-    }
-
-    public BolsaPuntos(){
-
     }
 }

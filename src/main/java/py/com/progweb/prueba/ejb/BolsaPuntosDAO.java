@@ -7,16 +7,12 @@ import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
-import java.time.LocalDate;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
 @Stateless
 public class BolsaPuntosDAO {
-
-    @PersistenceContext(unitName="pruebaPU")
-    private EntityManager em;
 
     @Inject
     ClienteDAO clienteDAO;
@@ -28,8 +24,10 @@ public class BolsaPuntosDAO {
     ConceptoPuntosDAO conceptoPuntosDAO;
     @Inject
     UsoPuntosDAO usoPuntosDAO;
+    @PersistenceContext(unitName = "pruebaPU")
+    private EntityManager em;
 
-    public BolsaPuntos cargarPuntos(Integer idCliente, Integer monto){
+    public BolsaPuntos cargarPuntos(Integer idCliente, Integer monto) {
         Date fechaDeHoy = new Date();
 
         BolsaPuntos retorno = new BolsaPuntos();
@@ -51,7 +49,7 @@ public class BolsaPuntosDAO {
         return retorno;
     }
 
-    public UsoPuntosCabecera usarPuntos(Integer idCliente, Integer idConceptoPuntos){
+    public UsoPuntosCabecera usarPuntos(Integer idCliente, Integer idConceptoPuntos) {
         Cliente cliente = clienteDAO.obtenerClientePorId(idCliente);
         ConceptoPuntos conceptoPuntos = conceptoPuntosDAO.obtenerConceptoPuntoPorId(idConceptoPuntos);
 
@@ -60,11 +58,11 @@ public class BolsaPuntosDAO {
         List<BolsaPuntos> bolsas = obtenerBolsasPorCliente(cliente);
 
         int saldoTotal = 0;
-        for(BolsaPuntos bolsa: bolsas){
+        for (BolsaPuntos bolsa : bolsas) {
             saldoTotal += bolsa.getSaldoPuntos();
         }
 
-        if (saldoTotal < puntajeDescontar){
+        if (saldoTotal < puntajeDescontar) {
             return null;
         }
 
@@ -76,17 +74,17 @@ public class BolsaPuntosDAO {
 
         usoPuntosDAO.crearUsoPuntosCabecera(usoPuntosCabecera);
 
-        for(BolsaPuntos bolsa: bolsas){
+        for (BolsaPuntos bolsa : bolsas) {
             int saldoBolsa = bolsa.getSaldoPuntos();
             UsoPuntosDetalle usoPuntosDetalle;
 
-            if(puntajeDescontar > saldoBolsa){
+            if (puntajeDescontar > saldoBolsa) {
                 puntajeDescontar -= saldoBolsa;
                 bolsa.setPuntajeUtilizado(bolsa.getPuntajeUtilizado() + saldoBolsa);
                 bolsa.setSaldoPuntos(0);
                 usoPuntosDetalle = new UsoPuntosDetalle(usoPuntosCabecera, saldoBolsa, bolsa);
                 usoPuntosDAO.crearUsoPuntosDetalle(usoPuntosDetalle);
-            }else{
+            } else {
                 bolsa.setPuntajeUtilizado(bolsa.getPuntajeUtilizado() + puntajeDescontar);
                 bolsa.setSaldoPuntos(saldoBolsa - puntajeDescontar);
                 usoPuntosDetalle = new UsoPuntosDetalle(usoPuntosCabecera, puntajeDescontar, bolsa);
@@ -100,7 +98,7 @@ public class BolsaPuntosDAO {
         return usoPuntosCabecera;
     }
 
-    private List<BolsaPuntos> obtenerBolsasPorCliente(Cliente cliente){
+    private List<BolsaPuntos> obtenerBolsasPorCliente(Cliente cliente) {
         Query query = em.createQuery("SELECT b FROM BolsaPuntos b WHERE b.idCliente = :cliente order by b.fechaAsignacion ASC");
         query.setParameter("cliente", cliente);
         return (List<BolsaPuntos>) query.getResultList();

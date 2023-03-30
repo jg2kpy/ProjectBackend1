@@ -13,7 +13,7 @@ import java.util.List;
 
 @Stateless
 public class ConceptoPuntosDAO {
-    @PersistenceContext(unitName="pruebaPU")
+    @PersistenceContext(unitName = "pruebaPU")
     private EntityManager em;
 
     //eesta anotacion es cuando requerimos que sea atomico el metodo

@@ -1,4 +1,5 @@
 package py.com.progweb.prueba.rest;
+
 import py.com.progweb.prueba.ejb.VencimientoPuntosDAO;
 import py.com.progweb.prueba.model.VencimientoPuntos;
 

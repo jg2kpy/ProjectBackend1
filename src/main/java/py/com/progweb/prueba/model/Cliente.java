@@ -4,7 +4,6 @@ package py.com.progweb.prueba.model;
 import lombok.Data;
 
 import javax.persistence.*;
-
 import java.util.Date;
 
 @Entity
@@ -18,6 +17,35 @@ public class Cliente {
     @GeneratedValue(generator = "clienteSec")
     @SequenceGenerator(name = "clienteSec", sequenceName = "cliente_sec", allocationSize = 0)
     private Integer idCliente;
+    @Basic(optional = false)
+    @Column(name = "nombre", length = 50)
+    private String nombre;
+    @Basic(optional = false)
+    @Column(name = "apellido", length = 50)
+    private String apellido;
+    @Basic(optional = false)
+    @Column(name = "nro_documento", length = 50)
+    private String nroDocumento;
+    @Basic(optional = false)
+    @Column(name = "tipo_documento", length = 50)
+    private String tipoDocumento;
+    @Basic(optional = false)
+    @Column(name = "nacionalidad", length = 50)
+    private String nacionalidad;
+    @Basic(optional = false)
+    @Column(name = "email", length = 50)
+    private String email;
+    @Basic(optional = false)
+    @Column(name = "telefono", length = 50)
+    private String telefono;
+    @Basic(optional = true)
+    @Column(name = "fecha_nacimiento")
+    @Temporal(TemporalType.DATE)
+    private Date fechaNacimiento;
+
+    public Cliente() {
+
+    }
 
     public Integer getIdCliente() {
         return idCliente;
@@ -27,10 +55,6 @@ public class Cliente {
         this.idCliente = idCliente;
     }
 
-    @Basic(optional = false)
-    @Column(name = "nombre", length = 50)
-    private String nombre;
-
     public String getNombre() {
         return nombre;
     }
@@ -38,10 +62,6 @@ public class Cliente {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-
-    @Basic(optional = false)
-    @Column(name = "apellido", length = 50)
-    private String apellido;
 
     public String getApellido() {
         return apellido;
@@ -51,10 +71,6 @@ public class Cliente {
         this.apellido = apellido;
     }
 
-    @Basic(optional = false)
-    @Column(name = "nro_documento", length = 50)
-    private String nroDocumento;
-
     public String getNroDocumento() {
         return nroDocumento;
     }
@@ -62,10 +78,6 @@ public class Cliente {
     public void setNroDocumento(String nroDocumento) {
         this.nroDocumento = nroDocumento;
     }
-
-    @Basic(optional = false)
-    @Column(name = "tipo_documento", length = 50)
-    private String tipoDocumento;
 
     public String getTipoDocumento() {
         return tipoDocumento;
@@ -75,10 +87,6 @@ public class Cliente {
         this.tipoDocumento = tipoDocumento;
     }
 
-    @Basic(optional = false)
-    @Column(name = "nacionalidad", length = 50)
-    private String nacionalidad;
-
     public String getNacionalidad() {
         return nacionalidad;
     }
@@ -86,10 +94,6 @@ public class Cliente {
     public void setNacionalidad(String nacionalidad) {
         this.nacionalidad = nacionalidad;
     }
-
-    @Basic(optional = false)
-    @Column(name = "email", length = 50)
-    private String email;
 
     public String getEmail() {
         return email;
@@ -99,10 +103,6 @@ public class Cliente {
         this.email = email;
     }
 
-    @Basic(optional = false)
-    @Column(name = "telefono", length = 50)
-    private String telefono;
-
     public String getTelefono() {
         return telefono;
     }
@@ -111,21 +111,12 @@ public class Cliente {
         this.telefono = telefono;
     }
 
-    @Basic(optional = true)
-    @Column(name = "fecha_nacimiento")
-    @Temporal(TemporalType.DATE)
-    private Date fechaNacimiento;
-
     public Date getFechaNacimiento() {
         return fechaNacimiento;
     }
 
     public void setFechaNacimiento(Date fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
-    }
-
-    public Cliente(){
-
     }
 
 }
