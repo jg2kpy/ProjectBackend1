@@ -3,6 +3,7 @@ package py.com.progweb.prueba.rest;
 import py.com.progweb.prueba.DTO.BolsaPuntosDTO;
 import py.com.progweb.prueba.DTO.UsoPuntosDTO;
 import py.com.progweb.prueba.ejb.BolsaPuntosDAO;
+import py.com.progweb.prueba.ejb.ReglasAsigPuntosDAO;
 import py.com.progweb.prueba.model.BolsaPuntos;
 import py.com.progweb.prueba.model.ReglasAsigPuntos;
 
@@ -27,6 +28,9 @@ public class ServiciosRest {
     @Inject
     BolsaPuntosDAO bolsaPuntosDAO;
 
+    @Inject
+    ReglasAsigPuntosDAO reglasAsigPuntosDAO;
+
     @GET
     @Path("saludo")
     public Response hola() {
@@ -44,7 +48,13 @@ public class ServiciosRest {
     @Path("/uso-puntos")
     public Response agregar(UsoPuntosDTO usoPuntosDTO) {
         UsoPuntosCabecera retorno = bolsaPuntosDAO.usarPuntos(usoPuntosDTO.idCliente,usoPuntosDTO.idConceptoPuntos);
-        return Response.ok(Objects.requireNonNullElse(retorno, "El usuario no tiene saldo suficiente para aplicar a este concepto")).build();
+        return Response.ok(Objects.requireNonNullElse(retorno, "{ \"mensaje\": \"El usuario no tiene saldo suficiente para aplicar a este concepto\" }")).build();
+    }
+
+    @GET
+    @Path("/conv-monto/{monto}")
+    public Response agregar(@PathParam("monto") Integer monto) {
+        return Response.ok(reglasAsigPuntosDAO.obtenerPuntosPorMonto(monto)).build();
     }
 
 }
