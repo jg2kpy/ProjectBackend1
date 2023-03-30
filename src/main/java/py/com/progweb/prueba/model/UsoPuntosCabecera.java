@@ -36,4 +36,51 @@ public class UsoPuntosCabecera {
     public UsoPuntosCabecera(){
 
     }
+
+    public Integer getIdUsoPuntosCabecera() {
+        return idUsoPuntosCabecera;
+    }
+
+    public void setIdUsoPuntosCabecera(Integer idUsoPuntosCabecera) {
+        this.idUsoPuntosCabecera = idUsoPuntosCabecera;
+    }
+
+    public Cliente getIdCliente() {
+        return idCliente;
+    }
+
+    public void setIdCliente(Cliente idCliente) {
+        this.idCliente = idCliente;
+    }
+
+    public Integer getPuntajeUtilizado() {
+        return puntajeUtilizado;
+    }
+
+    public void setPuntajeUtilizado(Integer puntajeUtilizado) {
+        this.puntajeUtilizado = puntajeUtilizado;
+    }
+
+    public Date getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(Date fecha) {
+        this.fecha = fecha;
+    }
+
+    public ConceptoPuntos getIdConceptoPuntos() {
+        return idConceptoPuntos;
+    }
+
+    public void setIdConceptoPuntos(ConceptoPuntos idConceptoPuntos) {
+        this.idConceptoPuntos = idConceptoPuntos;
+    }
+
+    public UsoPuntosCabecera(Cliente idCliente, Integer puntajeUtilizado, Date fecha, ConceptoPuntos idConceptoPuntos) {
+        this.idCliente = idCliente;
+        this.puntajeUtilizado = puntajeUtilizado;
+        this.fecha = fecha;
+        this.idConceptoPuntos = idConceptoPuntos;
+    }
 }

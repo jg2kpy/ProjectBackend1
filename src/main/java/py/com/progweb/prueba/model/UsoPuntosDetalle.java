@@ -31,4 +31,10 @@ public class UsoPuntosDetalle {
     public UsoPuntosDetalle(){
 
     }
+
+    public UsoPuntosDetalle(UsoPuntosCabecera idUsoPuntosCabecera, Integer puntajeUtilizado, BolsaPuntos idBolsaPuntos) {
+        this.idUsoPuntosCabecera = idUsoPuntosCabecera;
+        this.puntajeUtilizado = puntajeUtilizado;
+        this.idBolsaPuntos = idBolsaPuntos;
+    }
 }

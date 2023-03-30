@@ -12,9 +12,11 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import py.com.progweb.prueba.model.UsoPuntosCabecera;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Objects;
 
 @Path("servicios")
 @Produces("application/json")
@@ -41,8 +43,8 @@ public class ServiciosRest {
     @POST
     @Path("/uso-puntos")
     public Response agregar(UsoPuntosDTO usoPuntosDTO) {
-        BolsaPuntos retorno = bolsaPuntosDAO.usarPuntos(usoPuntosDTO.idCliente,usoPuntosDTO.idConceptoPuntos);
-        return Response.ok(retorno).build();
+        UsoPuntosCabecera retorno = bolsaPuntosDAO.usarPuntos(usoPuntosDTO.idCliente,usoPuntosDTO.idConceptoPuntos);
+        return Response.ok(Objects.requireNonNullElse(retorno, "El usuario no tiene saldo suficiente para aplicar a este concepto")).build();
     }
 
 }
