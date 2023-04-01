@@ -62,7 +62,7 @@ public class ReglasAsigPuntosRest {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response listarTodosLosReglasAsigPuntos() {
-        List<ReglasAsigPuntos> reglasAsigPuntos = reglasAsigPuntosDAO.listarTodosLosReglasAsigPuntos();
+        List reglasAsigPuntos = reglasAsigPuntosDAO.listarTodosLosReglasAsigPuntos();
         return Response.ok(reglasAsigPuntos).build();
     }
 

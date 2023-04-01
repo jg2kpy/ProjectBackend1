@@ -5,10 +5,7 @@ import py.com.progweb.prueba.model.Cliente;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.TypedQuery;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Root;
+import javax.persistence.Query;
 import java.util.List;
 
 @Stateless
@@ -30,13 +27,9 @@ public class ClienteDAO {
         em.remove(em.merge(cliente));
     }
 
-    public List<Cliente> listarTodosLosClientes() {
-        CriteriaBuilder criteriaBuilder = em.getCriteriaBuilder();
-        CriteriaQuery<Cliente> criteriaQuery = criteriaBuilder.createQuery(Cliente.class);
-        Root<Cliente> root = criteriaQuery.from(Cliente.class);
-        criteriaQuery.select(root);
-        TypedQuery<Cliente> typedQuery = em.createQuery(criteriaQuery);
-        return typedQuery.getResultList();
+    public List listarTodosLosClientes() {
+        Query query = em.createQuery("SELECT c FROM Cliente c", Cliente.class);
+        return query.getResultList();
     }
 
     public Cliente obtenerClientePorId(Integer id) {

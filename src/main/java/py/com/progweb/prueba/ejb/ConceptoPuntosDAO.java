@@ -1,10 +1,12 @@
 package py.com.progweb.prueba.ejb;
 
+import py.com.progweb.prueba.model.Cliente;
 import py.com.progweb.prueba.model.ConceptoPuntos;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
@@ -30,13 +32,9 @@ public class ConceptoPuntosDAO {
         em.remove(em.merge(conceptoPunto));
     }
 
-    public List<ConceptoPuntos> listarTodosLosConceptoPuntos() {
-        CriteriaBuilder criteriaBuilder = em.getCriteriaBuilder();
-        CriteriaQuery<ConceptoPuntos> criteriaQuery = criteriaBuilder.createQuery(ConceptoPuntos.class);
-        Root<ConceptoPuntos> root = criteriaQuery.from(ConceptoPuntos.class);
-        criteriaQuery.select(root);
-        TypedQuery<ConceptoPuntos> typedQuery = em.createQuery(criteriaQuery);
-        return typedQuery.getResultList();
+    public List listarTodosLosConceptoPuntos() {
+        Query query = em.createQuery("SELECT cp FROM ConceptoPuntos cp", ConceptoPuntos.class);
+        return query.getResultList();
     }
 
     public ConceptoPuntos obtenerConceptoPuntoPorId(Integer id) {

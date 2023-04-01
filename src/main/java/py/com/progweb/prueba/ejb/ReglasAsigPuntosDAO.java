@@ -1,5 +1,6 @@
 package py.com.progweb.prueba.ejb;
 
+import py.com.progweb.prueba.model.ConceptoPuntos;
 import py.com.progweb.prueba.model.ReglasAsigPuntos;
 
 import javax.ejb.Stateless;
@@ -31,13 +32,9 @@ public class ReglasAsigPuntosDAO {
         em.remove(em.merge(reglasAsigPuntos));
     }
 
-    public List<ReglasAsigPuntos> listarTodosLosReglasAsigPuntos() {
-        CriteriaBuilder criteriaBuilder = em.getCriteriaBuilder();
-        CriteriaQuery<ReglasAsigPuntos> criteriaQuery = criteriaBuilder.createQuery(ReglasAsigPuntos.class);
-        Root<ReglasAsigPuntos> root = criteriaQuery.from(ReglasAsigPuntos.class);
-        criteriaQuery.select(root);
-        TypedQuery<ReglasAsigPuntos> typedQuery = em.createQuery(criteriaQuery);
-        return typedQuery.getResultList();
+    public List listarTodosLosReglasAsigPuntos() {
+        Query query = em.createQuery("SELECT rap FROM ReglasAsigPuntos rap", ReglasAsigPuntos.class);
+        return query.getResultList();
     }
 
     public ReglasAsigPuntos obtenerReglasAsigPuntosPorId(Integer id) {

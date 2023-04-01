@@ -62,7 +62,7 @@ public class ConceptoPuntosRest {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response listarTodosLosConceptoPuntos() {
-        List<ConceptoPuntos> conceptoPuntos = conceptoPuntoDAO.listarTodosLosConceptoPuntos();
+        List conceptoPuntos = conceptoPuntoDAO.listarTodosLosConceptoPuntos();
         return Response.ok(conceptoPuntos).build();
     }
 

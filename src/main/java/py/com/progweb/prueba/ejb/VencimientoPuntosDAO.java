@@ -6,10 +6,6 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
-import javax.persistence.TypedQuery;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Root;
 import java.util.Date;
 import java.util.List;
 
@@ -31,13 +27,9 @@ public class VencimientoPuntosDAO {
         em.remove(em.merge(vencimientoPuntos));
     }
 
-    public List<VencimientoPuntos> listarTodosLosVencimientoPuntos() {
-        CriteriaBuilder criteriaBuilder = em.getCriteriaBuilder();
-        CriteriaQuery<VencimientoPuntos> criteriaQuery = criteriaBuilder.createQuery(VencimientoPuntos.class);
-        Root<VencimientoPuntos> root = criteriaQuery.from(VencimientoPuntos.class);
-        criteriaQuery.select(root);
-        TypedQuery<VencimientoPuntos> typedQuery = em.createQuery(criteriaQuery);
-        return typedQuery.getResultList();
+    public List listarTodosLosVencimientoPuntos() {
+        Query query = em.createQuery("SELECT vp FROM VencimientoPuntos vp", VencimientoPuntos.class);
+        return query.getResultList();
     }
 
     public VencimientoPuntos obtenerVencimientoPuntosPorId(Integer id) {
