@@ -1,13 +1,9 @@
 package py.com.progweb.prueba.model;
 
-
-import lombok.Data;
-
 import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Data
 @Table(name = "cliente")
 public class Cliente {
 

@@ -1,11 +1,8 @@
 package py.com.progweb.prueba.model;
 
-import lombok.Data;
-
 import javax.persistence.*;
 
 @Entity
-@Data
 @Table(name = "reglasasigpuntos")
 public class ReglasAsigPuntos {
     @Id
