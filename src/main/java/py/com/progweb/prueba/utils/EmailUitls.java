@@ -36,8 +36,12 @@ public class EmailUitls {
         }
         return session;
     }
-
-    public static void enviarCorreo(String from, String to, String subject, String body){
+    public static void enviarCorreo(String from, String to, String subject, String body) {
+        new Thread(() -> {
+            enviarCorreoThread(from,to,subject,body);
+        }).start();
+    }
+    public static void enviarCorreoThread(String from, String to, String subject, String body){
         Session session = getSession();
         Message message = new MimeMessage(session);
         try {
