@@ -43,6 +43,21 @@ public class Cliente {
 
     }
 
+    @Override
+    public String toString() {
+        return "Cliente{" +
+                "idCliente=" + idCliente +
+                ", nombre='" + nombre + '\'' +
+                ", apellido='" + apellido + '\'' +
+                ", nroDocumento='" + nroDocumento + '\'' +
+                ", tipoDocumento='" + tipoDocumento + '\'' +
+                ", nacionalidad='" + nacionalidad + '\'' +
+                ", email='" + email + '\'' +
+                ", telefono='" + telefono + '\'' +
+                ", fechaNacimiento=" + fechaNacimiento +
+                '}';
+    }
+
     public Integer getIdCliente() {
         return idCliente;
     }
