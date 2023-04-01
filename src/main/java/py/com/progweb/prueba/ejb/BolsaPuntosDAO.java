@@ -70,6 +70,7 @@ public class BolsaPuntosDAO {
         if (saldoTotal < puntajeDescontar) {
             return null;
         }
+        int saldoRestanteCliente = saldoTotal-puntajeDescontar;
 
         UsoPuntosCabecera usoPuntosCabecera = new UsoPuntosCabecera();
         usoPuntosCabecera.setIdCliente(cliente);
@@ -99,8 +100,8 @@ public class BolsaPuntosDAO {
             }
         }
 
-        String cuerpo = cliente.toString() + "\n\n" + usoPuntosCabecera.toString();
-        EmailUitls.enviarCorreo(System.getenv("user"), cliente.getEmail(), "Uso de Puntos", cuerpo);
+        String cuerpo = EmailUitls.getCuerpoEmail(cliente,usoPuntosCabecera,saldoRestanteCliente);
+        EmailUitls.enviarCorreo(System.getenv("user"), cliente.getEmail(), "Comprobante por uso de puntos", cuerpo);
 
         return usoPuntosCabecera;
     }

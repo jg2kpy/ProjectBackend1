@@ -1,5 +1,8 @@
 package py.com.progweb.prueba.utils;
 
+import py.com.progweb.prueba.model.Cliente;
+import py.com.progweb.prueba.model.UsoPuntosCabecera;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -7,7 +10,10 @@ import java.io.IOException;
 import java.util.Properties;
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeMultipart;
+import java.text.SimpleDateFormat;
 
 public class EmailUitls {
     private static Session session;
@@ -45,11 +51,22 @@ public class EmailUitls {
             message.setFrom(new InternetAddress(from));
             message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(to));
             message.setSubject(subject);
-            message.setText(body);
+            message.setContent(body, "text/html");
 
             Transport.send(message);
         } catch (MessagingException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public static String getCuerpoEmail(Cliente cliente, UsoPuntosCabecera usoPuntosCabecera, int saldoRestanteCliente) {
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+
+        String retorno = "Hola "+cliente.getNombre()+
+                "<br><br> Se registró un uso de puntos el "+formatter.format(usoPuntosCabecera.getFecha())+
+                "<br><b>Concepto:</b> "+usoPuntosCabecera.getIdConceptoPuntos().getDescripcion()+
+                "<br><b>Puntos usados:</b> "+usoPuntosCabecera.getPuntajeUtilizado()+
+                "<br><br>Actualmente le quedan <b>"+saldoRestanteCliente+"</b> puntos";
+        return "<html><body>" + retorno + "</body></html>";
     }
 }
