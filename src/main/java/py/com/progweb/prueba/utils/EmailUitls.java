@@ -22,10 +22,11 @@ public class EmailUitls {
 
             // Create a static session object that can be reused across requests
             Properties properties = new Properties();
-            properties.setProperty("mail.smtp.host", "smtp.gmail.com");
-            properties.setProperty("mail.smtp.port", "465");
-            properties.put("mail.smtp.ssl.enable", "true");
+            properties.setProperty("mail.smtp.host", "smtp.office365.com");
+            properties.setProperty("mail.smtp.port", "587");
+            properties.put("mail.smtp.starttls.enable", "true");
             properties.put("mail.smtp.auth", "true");
+
 
             session = Session.getInstance(properties, new Authenticator() {
                 protected PasswordAuthentication getPasswordAuthentication() {
