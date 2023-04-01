@@ -30,6 +30,11 @@ public class BolsaPuntosDAO {
     @PersistenceContext(unitName = "pruebaPU")
     private EntityManager em;
 
+    public List listarTodasLasBolsas() {
+        Query query = em.createQuery("SELECT bp FROM BolsaPuntos bp", BolsaPuntos.class);
+        return query.getResultList();
+    }
+
     public BolsaPuntos cargarPuntos(Integer idCliente, Integer monto) {
         Date fechaDeHoy = new Date();
 
@@ -77,19 +82,20 @@ public class BolsaPuntosDAO {
         for (BolsaPuntos bolsa : bolsas) {
             int saldoBolsa = bolsa.getSaldoPuntos();
             UsoPuntosDetalle usoPuntosDetalle;
-
-            if (puntajeDescontar > saldoBolsa) {
-                puntajeDescontar -= saldoBolsa;
-                bolsa.setPuntajeUtilizado(bolsa.getPuntajeUtilizado() + saldoBolsa);
-                bolsa.setSaldoPuntos(0);
-                usoPuntosDetalle = new UsoPuntosDetalle(usoPuntosCabecera, saldoBolsa, bolsa);
-                usoPuntosDAO.crearUsoPuntosDetalle(usoPuntosDetalle);
-            } else {
-                bolsa.setPuntajeUtilizado(bolsa.getPuntajeUtilizado() + puntajeDescontar);
-                bolsa.setSaldoPuntos(saldoBolsa - puntajeDescontar);
-                usoPuntosDetalle = new UsoPuntosDetalle(usoPuntosCabecera, puntajeDescontar, bolsa);
-                usoPuntosDAO.crearUsoPuntosDetalle(usoPuntosDetalle);
-                break;
+            if (saldoBolsa>0) {
+                if (puntajeDescontar > saldoBolsa) {
+                    puntajeDescontar -= saldoBolsa;
+                    bolsa.setPuntajeUtilizado(bolsa.getPuntajeUtilizado() + saldoBolsa);
+                    bolsa.setSaldoPuntos(0);
+                    usoPuntosDetalle = new UsoPuntosDetalle(usoPuntosCabecera, saldoBolsa, bolsa);
+                    usoPuntosDAO.crearUsoPuntosDetalle(usoPuntosDetalle);
+                } else {
+                    bolsa.setPuntajeUtilizado(bolsa.getPuntajeUtilizado() + puntajeDescontar);
+                    bolsa.setSaldoPuntos(saldoBolsa - puntajeDescontar);
+                    usoPuntosDetalle = new UsoPuntosDetalle(usoPuntosCabecera, puntajeDescontar, bolsa);
+                    usoPuntosDAO.crearUsoPuntosDetalle(usoPuntosDetalle);
+                    break;
+                }
             }
         }
 
@@ -105,4 +111,15 @@ public class BolsaPuntosDAO {
         return (List<BolsaPuntos>) query.getResultList();
     }
 
+    public void actualizarVencidos() {
+        List<BolsaPuntos> bolsas = listarTodasLasBolsas();
+        Date fechaDeHoy = new Date();
+
+        for (BolsaPuntos bolsa : bolsas) {
+            if (fechaDeHoy.after(bolsa.getFechaCaducidad())){
+                bolsa.setSaldoPuntos(0);
+            }
+        }
+
+    }
 }
