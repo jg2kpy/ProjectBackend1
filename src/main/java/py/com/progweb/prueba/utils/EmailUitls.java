@@ -17,9 +17,6 @@ public class EmailUitls {
             String user = System.getenv("user");
             String pass = System.getenv("pass");
 
-            System.out.println(user);
-            System.out.println(pass);
-
             // Create a static session object that can be reused across requests
             Properties properties = new Properties();
             properties.setProperty("mail.smtp.host", "smtp.office365.com");
