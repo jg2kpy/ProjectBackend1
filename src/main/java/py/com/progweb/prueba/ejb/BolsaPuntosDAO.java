@@ -11,6 +11,8 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
+import static py.com.progweb.prueba.utils.utils.sumarFechaDias;
+
 @Stateless
 public class BolsaPuntosDAO {
 
@@ -35,10 +37,7 @@ public class BolsaPuntosDAO {
         retorno.setFechaAsignacion(fechaDeHoy);
 
         int diasDuracion = vencimientoPuntosDAO.obtenerDiasDuracionPorFecha(fechaDeHoy);
-        Calendar calendario = Calendar.getInstance();
-        calendario.setTime(new Date());
-        calendario.add(Calendar.DATE, diasDuracion);
-        retorno.setFechaCaducidad(calendario.getTime());
+        retorno.setFechaCaducidad(sumarFechaDias(fechaDeHoy, diasDuracion));
 
         retorno.setPuntajeAsignado(reglasAsigPuntosDAO.obtenerPuntosPorMonto(monto));
 
