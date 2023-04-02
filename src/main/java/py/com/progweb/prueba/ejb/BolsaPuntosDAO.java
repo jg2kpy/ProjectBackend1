@@ -8,11 +8,10 @@ import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-import static py.com.progweb.prueba.utils.utils.sumarFechaDias;
+import static py.com.progweb.prueba.utils.Utils.sumarFechaDias;
 
 @Stateless
 public class BolsaPuntosDAO {
