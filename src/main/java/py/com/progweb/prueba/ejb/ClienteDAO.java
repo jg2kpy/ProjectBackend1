@@ -6,7 +6,12 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.persistence.TypedQuery;
+import java.text.SimpleDateFormat;
 import java.util.List;
+import java.util.ArrayList;
+import java.util.Date;
+
 
 @Stateless
 public class ClienteDAO {
@@ -34,5 +39,34 @@ public class ClienteDAO {
 
     public Cliente obtenerClientePorId(Integer id) {
         return em.find(Cliente.class, id);
+    }
+
+    public List<Cliente> buscarClientes(String nombre, String apellido, Date fechaNacimiento) {
+        String jpql = "SELECT c FROM Cliente c WHERE ";
+        List<String> clausulas = new ArrayList<>();
+        if (nombre != null && !nombre.isEmpty()) {
+            clausulas.add("c.nombre LIKE :nombre");
+        }
+        if (apellido != null && !apellido.isEmpty()) {
+            clausulas.add("c.apellido LIKE :apellido");
+        }
+        if (fechaNacimiento != null) {
+            clausulas.add("c.fechaNacimiento = :fechaNacimiento");
+        }
+        if (clausulas.isEmpty()) {
+            throw new IllegalArgumentException("Debe especificar al menos un criterio de búsqueda");
+        }
+        jpql += String.join(" AND ", clausulas);
+        TypedQuery<Cliente> query = em.createQuery(jpql, Cliente.class);
+        if (nombre != null && !nombre.isEmpty()) {
+            query.setParameter("nombre", "%" + nombre + "%");
+        }
+        if (apellido != null && !apellido.isEmpty()) {
+            query.setParameter("apellido", "%" + apellido + "%");
+        }
+        if (fechaNacimiento != null) {
+            query.setParameter("fechaNacimiento", fechaNacimiento);
+        }
+        return query.getResultList();
     }
 }

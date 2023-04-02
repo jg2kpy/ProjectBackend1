@@ -1,6 +1,8 @@
 package py.com.progweb.prueba.rest;
 
+import py.com.progweb.prueba.ejb.BolsaPuntosDAO;
 import py.com.progweb.prueba.ejb.ClienteDAO;
+import py.com.progweb.prueba.model.BolsaPuntos;
 import py.com.progweb.prueba.model.Cliente;
 
 import javax.enterprise.context.RequestScoped;
@@ -8,7 +10,9 @@ import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import java.util.List;
+import java.text.ParseException;
+import java.util.*;
+import java.text.SimpleDateFormat;
 
 @Path("cliente")
 @Produces("application/json")
@@ -18,6 +22,10 @@ public class ClienteRest {
 
     @Inject
     ClienteDAO clienteDAO;
+
+    @Inject
+    private BolsaPuntosDAO bolsaPuntosDAO;
+
 
     @GET
     @Path("saludo")
@@ -77,4 +85,36 @@ public class ClienteRest {
             return Response.ok(cliente).build();
         }
     }
+    @GET
+    @Path("/buscar")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Cliente> buscarClientes(@QueryParam("nombre") String nombre,
+                                        @QueryParam("apellido") String apellido,
+                                        @QueryParam("fechaNacimiento") String fechaNacimiento) throws ParseException {
+        Date fecha = null;
+        if(fechaNacimiento != null) {
+            SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+            fecha = formatter.parse(fechaNacimiento);
+        }
+        return clienteDAO.buscarClientes(nombre, apellido, fecha);
+    }
+
+    @GET
+    @Path("/puntos-a-vencer")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Cliente> obtenerClientesConPuntosAVencerEnXDias(@QueryParam("dias") int dias) {
+        Date fechaActual = new Date();
+        Calendar c = Calendar.getInstance();
+        c.setTime(fechaActual);
+        c.add(Calendar.DATE, dias);
+        Date fechaLimite = c.getTime();
+        List<BolsaPuntos> bolsas = bolsaPuntosDAO.obtenerBolsasConFechaCaducidadEnRango(fechaActual, fechaLimite);
+        Set<Cliente> clientesConPuntosAVencer = new HashSet<>();
+        for (BolsaPuntos bolsa : bolsas) {
+            clientesConPuntosAVencer.add(bolsa.getIdCliente());
+        }
+        return new ArrayList<>(clientesConPuntosAVencer);
+    }
+
+
 }

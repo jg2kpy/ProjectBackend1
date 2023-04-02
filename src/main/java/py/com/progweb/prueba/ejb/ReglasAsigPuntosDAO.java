@@ -47,4 +47,6 @@ public class ReglasAsigPuntosDAO {
         int montoEquivalencia = (int) query.getResultList().get(0);
         return monto / montoEquivalencia;
     }
+
+
 }

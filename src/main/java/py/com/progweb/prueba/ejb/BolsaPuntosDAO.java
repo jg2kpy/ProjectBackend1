@@ -123,4 +123,15 @@ public class BolsaPuntosDAO {
         }
 
     }
+
+    public List<BolsaPuntos> obtenerBolsasConFechaCaducidadEnRango(Date fechaInicio, Date fechaFin) {
+        System.out.println(fechaInicio);
+        System.out.println(fechaFin);
+        System.out.println(em);
+        Query query = em.createQuery("SELECT b FROM BolsaPuntos b WHERE b.fechaCaducidad BETWEEN :fechaInicio AND :fechaFin");
+        query.setParameter("fechaInicio", fechaInicio);
+        query.setParameter("fechaFin", fechaFin);
+        List<BolsaPuntos> bolsas = query.getResultList();
+        return bolsas;
+    }
 }
