@@ -8,6 +8,8 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import java.util.List;
 
+import static py.com.progweb.prueba.utils.utils.sumarFechaDias;
+
 @Stateless
 public class ClienteDAO {
     @PersistenceContext(unitName = "pruebaPU")
@@ -16,10 +18,12 @@ public class ClienteDAO {
     //eesta anotacion es cuando requerimos que sea atomico el metodo
     //@TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
     public void crearCliente(Cliente cliente) {
+        cliente.setFechaNacimiento(sumarFechaDias(cliente.getFechaNacimiento(),1));
         em.persist(cliente);
     }
 
     public void actualizarCliente(Cliente cliente) {
+        cliente.setFechaNacimiento(sumarFechaDias(cliente.getFechaNacimiento(),1));
         em.merge(cliente);
     }
 

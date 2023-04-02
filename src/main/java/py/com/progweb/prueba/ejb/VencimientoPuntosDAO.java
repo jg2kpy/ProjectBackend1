@@ -9,6 +9,8 @@ import javax.persistence.Query;
 import java.util.Date;
 import java.util.List;
 
+import static py.com.progweb.prueba.utils.utils.sumarFechaDias;
+
 @Stateless
 public class VencimientoPuntosDAO {
 
@@ -16,10 +18,14 @@ public class VencimientoPuntosDAO {
     private EntityManager em;
 
     public void crearVencimientoPuntos(VencimientoPuntos vencimientoPuntos) {
+        vencimientoPuntos.setFechaInicioValidez(sumarFechaDias(vencimientoPuntos.getFechaInicioValidez(),1));;
+        vencimientoPuntos.setFechaFinValidez(sumarFechaDias(vencimientoPuntos.getFechaFinValidez(),1));
         em.persist(vencimientoPuntos);
     }
 
     public void actualizarVencimientoPuntos(VencimientoPuntos vencimientoPuntos) {
+        vencimientoPuntos.setFechaInicioValidez(sumarFechaDias(vencimientoPuntos.getFechaInicioValidez(),1));;
+        vencimientoPuntos.setFechaFinValidez(sumarFechaDias(vencimientoPuntos.getFechaFinValidez(),1));
         em.merge(vencimientoPuntos);
     }
 

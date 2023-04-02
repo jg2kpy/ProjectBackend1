@@ -168,7 +168,7 @@ formulario.addEventListener("submit", async (evento) => {
     nacionalidad: formulario.nacionalidad.value,
     email: formulario.email.value,
     telefono: formulario.telefono.value,
-    fechaNacimiento: formulario.fechaNacimiento.valueAsNumber
+    fechaNacimiento: formulario.fechaNacimiento.value
   };
 
   const resultado = await agregarCliente(cliente);
@@ -200,9 +200,8 @@ editarForm.addEventListener("submit", async (evento) => {
     nacionalidad: editarForm["editar-nacionalidad"].value,
     email: editarForm["editar-email"].value,
     telefono: editarForm["editar-telefono"].value,
-    fechaNacimiento: editarForm["editar-fechaNacimiento"].valueAsNumber
+    fechaNacimiento: editarForm["editar-fechaNacimiento"].value
   };
-
   const resultado = await actualizarCliente(editarForm["editar-id"].value, cliente);
   if (resultado) {
     ocultarEditarFormulario();
