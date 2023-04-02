@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>CRUD de Vencimientos de Puntos</title>
+  <!-- <link rel="stylesheet" href="vencimiento.css"> -->
+</head>
+<body>
+<div class="container">
+  <a href="../index.html" class="menu-btn">Menu</a>
+  <br>
+
+  <h1>CRUD de Vencimientos de Puntos</h1>
+
+  <!-- Formulario para crear un nuevo vencimiento -->
+  <h2>Agregar nuevo rango de Vencimiento</h2>
+  <form>
+    <div>
+      <label for="fechaInicioValidez">Fecha de Inicio de Validez:</label>
+      <input type="date" id="fechaInicioValidez" required>
+    </div>
+    <div>
+      <label for="fechaFinValidez">Fecha de Fin de Validez:</label>
+      <input type="date" id="fechaFinValidez" required>
+    </div>
+    <div>
+      <label for="diasDuracion">Dias de Duracion:</label>
+      <input type="number" id="diasDuracion" required>
+    </div>
+    <button type="submit">Agregar</button>
+  </form>
+
+  <!-- Tabla de vencimientos -->
+  <h2>Vencimientos de Puntos</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Fecha Inicio</th>
+        <th>Fecha Fin</th>
+        <th>Dias duracion</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody id="tabla-body">
+      <!-- Los registros se agregarán aquí mediante JavaScript -->
+    </tbody>
+  </table>
+
+  <!-- Formulario para editar un vencimiento -->
+  <div id="editar-formulario" style="display: none;">
+    <h2>Editar Concepto</h2>
+    <form>
+      <div>
+        <label for="editar-id">ID:</label>
+        <input type="text" id="editar-id" readonly required>
+      </div>
+      <div>
+        <label for="editar-fechaInicioValidez">Fecha de Inicio de Validez:</label>
+        <input type="date" id="editar-fechaInicioValidez" required>
+      </div>
+      <div>
+        <label for="editar-fechaFinValidez">Fecha de Fin de Validez:</label>
+        <input type="date" id="editar-fechaFinValidez" required>
+      </div>
+      <div>
+        <label for="editar-diasDuracion">Dias de Duracion:</label>
+        <input type="number" id="editar-diasDuracion" required>
+      </div>
+      <button type="submit">Editar</button>
+    </form>
+    </div>
+
+    <!-- Formulario para eliminar un vencimiento -->
+    <div id="eliminar-formulario" style="display: none;">
+        <h2>Eliminar</h2>
+        <form>
+            <p>¿Está seguro que desea eliminar?</p>
+            <button type="submit">Eliminar</button>
+        </form>
+    </div>
+
+    <script src="vencimientoPuntos.js"></script>
+
+</body>

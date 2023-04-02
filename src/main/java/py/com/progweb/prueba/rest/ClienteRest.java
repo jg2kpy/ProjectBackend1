@@ -62,7 +62,7 @@ public class ClienteRest {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response listarTodosLosClientes() {
-        List<Cliente> clientes = clienteDAO.listarTodosLosClientes();
+        List clientes = clienteDAO.listarTodosLosClientes();
         return Response.ok(clientes).build();
     }
 

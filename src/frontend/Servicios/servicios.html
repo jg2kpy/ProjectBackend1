@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Servicios</title>
+  <!-- <link rel="stylesheet" href="vencimiento.css"> -->
+</head>
+
+<body>
+  <div class="container">
+    <a href="../index.html" class="menu-btn">Menu</a>
+    <br>
+
+    <h1>Servicios</h1>
+
+    <h2>Cargar Puntos</h2>
+    <form id="cargar-puntos">
+      <div>
+        <label for="idCliente">Id Cliente:</label>
+        <input type="number" id="idCliente" required>
+      </div>
+      <div>
+        <label for="monto">Monto:</label>
+        <input type="number" id="monto" required>
+      </div>
+      <button type="submit">Cargar</button>
+    </form>
+
+    <br>
+    <code id="code-cargar-puntos"></code>
+
+    <h2>Usar Puntos</h2>
+    
+    <form id="usar-puntos">
+      <div>
+        <label for="idCliente">Id Cliente:</label>
+        <input type="number" id="idCliente" required>
+      </div>
+      <div>
+        <label for="idConceptoPuntos">ID Concepto:</label>
+        <input type="number" id="idConceptoPuntos" required>
+      </div>
+      <button type="submit">Usar</button>
+    </form>
+    <br>
+    <code id="code-usar-puntos"></code>
+
+    <h2>Convertir monto a puntos</h2>
+    <form id="convertir">
+      <div>
+        <label for="monto">Monto:</label>
+        <input type="number" id="monto" required>
+      </div>
+      <button type="submit">Convertir</button>
+    </form>
+
+    <br>
+    <code id="code-convertir"></code>
+
+    <script src="servicios.js"></script>
+
+</body>

@@ -62,7 +62,7 @@ public class VencimientoPuntosRest {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response listarTodosLosVencimientoPuntos() {
-        List<VencimientoPuntos> vencimientoPuntos = vencimientoPuntosDAO.listarTodosLosVencimientoPuntos();
+        List vencimientoPuntos = vencimientoPuntosDAO.listarTodosLosVencimientoPuntos();
         return Response.ok(vencimientoPuntos).build();
     }
 

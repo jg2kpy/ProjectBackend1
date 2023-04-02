@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>CRUD de Clientes</title>
+  <!-- <link rel="stylesheet" href="cliente.css"> -->
+</head>
+<body>
+<div class="container">
+  <a href="../index.html" class="menu-btn">Menu</a>
+  <br>
+
+  <h1>CRUD de Clientes</h1>
+
+  <!-- Formulario para crear un nuevo cliente -->
+  <h2>Agregar Cliente</h2>
+  <form>
+    <div>
+      <label for="nombre">Nombre:</label>
+      <input type="text" id="nombre" required>
+    </div>
+    <div>
+      <label for="apellido">Apellido:</label>
+      <input type="text" id="apellido" required>
+    </div>
+    <div>
+      <label for="nroDocumento">Número de Documento:</label>
+      <input type="text" id="nroDocumento" required>
+    </div>
+    <div>
+      <label for="tipoDocumento">Tipo de Documento:</label>
+      <input type="text" id="tipoDocumento" required>
+    </div>
+    <div>
+      <label for="nacionalidad">Nacionalidad:</label>
+      <input type="text" id="nacionalidad" required>
+    </div>
+    <div>
+      <label for="email">Email:</label>
+      <input type="email" id="email" required>
+    </div>
+    <div>
+      <label for="telefono">Teléfono:</label>
+      <input type="text" id="telefono" required>
+    </div>
+    <div>
+      <label for="fechaNacimiento">Fecha de Nacimiento:</label>
+      <input type="date" id="fechaNacimiento" required>
+    </div>
+    <button type="submit">Agregar</button>
+  </form>
+
+  <!-- Tabla de clientes -->
+  <h2>Clientes</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>Número de Documento</th>
+        <th>Tipo de Documento</th>
+        <th>Nacionalidad</th>
+        <th>Email</th>
+        <th>Teléfono</th>
+        <th>Fecha de Nacimiento</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody id="tabla-body">
+      <!-- Los registros se agregarán aquí mediante JavaScript -->
+    </tbody>
+  </table>
+
+  <!-- Formulario para editar un cliente -->
+  <div id="editar-formulario" style="display: none;">
+    <h2>Editar Cliente</h2>
+    <form>
+      <div>
+        <label for="editar-id">Id:</label>
+        <input type="text" id="editar-id" readonly required>
+      </div>
+      <div>
+        <label for="editar-nombre">Nombre:</label>
+        <input type="text" id="editar-nombre" required>
+      </div>
+      <div>
+        <label for="editar-apellido">Apellido:</label>
+        <input type="text" id="editar-apellido" required>
+      </div>
+      <div>
+        <label for="editar-nroDocumento">Número de Documento:</label>
+        <input type="text" id="editar-nroDocumento" required>
+      </div>
+      <div>
+        <label for="editar-tipoDocumento">Tipo de Documento:</label>
+        <input type="text" id="editar-tipoDocumento" required>
+      </div>
+      <div>
+        <label for="editar-nacionalidad">Nacionalidad:</label>
+        <input type="text" id="editar-nacionalidad" required>
+        </div>
+        <div>
+            <label for="editar-email">Email:</label>
+            <input type="email" id="editar-email" required>
+        </div>
+        <div>
+            <label for="editar-telefono">Teléfono:</label>
+            <input type="text" id="editar-telefono" required>
+        </div>
+        <div>
+            <label for="editar-fechaNacimiento">Fecha de Nacimiento:</label>
+            <input type="date" id="editar-fechaNacimiento" required>
+        </div>
+        <button type="submit">Editar</button>
+    </form>
+    </div>
+
+    <!-- Formulario para eliminar un cliente -->
+    <div id="eliminar-formulario" style="display: none;">
+        <h2>Eliminar</h2>
+        <form>
+            <p>¿Está seguro que desea eliminar?</p>
+            <button type="submit">Eliminar</button>
+        </form>
+    </div>
+
+    <script src="cliente.js"></script>
+
+</body>

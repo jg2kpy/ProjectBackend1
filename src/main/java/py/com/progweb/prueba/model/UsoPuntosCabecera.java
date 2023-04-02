@@ -1,12 +1,9 @@
 package py.com.progweb.prueba.model;
 
-import lombok.Data;
-
 import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Data
 @Table(name = "usoPuntosCabecera")
 public class UsoPuntosCabecera {
     @Id
@@ -35,6 +32,17 @@ public class UsoPuntosCabecera {
 
     public UsoPuntosCabecera() {
 
+    }
+
+    @Override
+    public String toString() {
+        return "UsoPuntosCabecera{" +
+                "idUsoPuntosCabecera=" + idUsoPuntosCabecera +
+                ", idCliente=" + idCliente +
+                ", puntajeUtilizado=" + puntajeUtilizado +
+                ", fecha=" + fecha +
+                ", idConceptoPuntos=" + idConceptoPuntos +
+                '}';
     }
 
     public UsoPuntosCabecera(Cliente idCliente, Integer puntajeUtilizado, Date fecha, ConceptoPuntos idConceptoPuntos) {
