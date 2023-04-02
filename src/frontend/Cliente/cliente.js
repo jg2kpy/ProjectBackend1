@@ -41,7 +41,7 @@ async function eliminarCliente(id) {
     const response = await fetch(`${API_URL}/${id}`, {
       method: "DELETE"
     });
-    //todo
+    //como nuestro servidor no retorna nada al actualizar, retorno true
     //const data = await response.json();
     //return data;
     return true;
@@ -60,7 +60,7 @@ async function actualizarCliente(id, cliente) {
       },
       body: JSON.stringify(cliente)
     });
-    //todo
+    //como nuestro servidor no retorna nada al actualizar, retorno true
     //const data = await response.json();
     //return data;
     return true;
@@ -180,10 +180,10 @@ formulario.addEventListener("submit", async (evento) => {
 });
 
 // Función para eliminar un cliente al hacer clic en el botón de eliminar en la fila de la tabla
-function eliminarClienteClick(cliente) {
+async function eliminarClienteClick(cliente) {
   const confirmacion = confirm(`¿Desea eliminar al cliente ${cliente.nombre} ${cliente.apellido}?`);
   if (confirmacion) {
-    eliminarCliente(cliente.idCliente);
+    const resultado = await eliminarCliente(cliente.idCliente);
     mostrarTablaClientes();
   }
 }
