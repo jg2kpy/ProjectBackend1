@@ -129,6 +129,8 @@ async function mostrarTablaClientes() {
 
   tablaBody.innerHTML = "";
 
+  clientes.sort((a, b) => a.idCliente - b.idCliente);
+
   clientes.forEach((cliente) => {
     const fila = crearFilaCliente(cliente);
     tablaBody.appendChild(fila);
@@ -137,18 +139,18 @@ async function mostrarTablaClientes() {
 
 // Función para mostrar el formulario de edición de cliente
 function mostrarEditarFormulario(cliente) {
-    editarForm["editar-id"].value = cliente.idCliente;
-    editarForm["editar-nombre"].value = cliente.nombre;
-    editarForm["editar-apellido"].value = cliente.apellido;
-    editarForm["editar-nroDocumento"].value = cliente.nroDocumento;
-    editarForm["editar-tipoDocumento"].value = cliente.tipoDocumento;
-    editarForm["editar-nacionalidad"].value = cliente.nacionalidad;
-    editarForm["editar-email"].value = cliente.email;
-    editarForm["editar-telefono"].value = cliente.telefono;
-    editarForm["editar-fechaNacimiento"].valueAsNumber = cliente.fechaNacimiento;
+  editarForm["editar-id"].value = cliente.idCliente;
+  editarForm["editar-nombre"].value = cliente.nombre;
+  editarForm["editar-apellido"].value = cliente.apellido;
+  editarForm["editar-nroDocumento"].value = cliente.nroDocumento;
+  editarForm["editar-tipoDocumento"].value = cliente.tipoDocumento;
+  editarForm["editar-nacionalidad"].value = cliente.nacionalidad;
+  editarForm["editar-email"].value = cliente.email;
+  editarForm["editar-telefono"].value = cliente.telefono;
+  editarForm["editar-fechaNacimiento"].valueAsNumber = cliente.fechaNacimiento;
 
-    // habilito el display del form
-    editarFormulario.style.display = "block";
+  // habilito el display del form
+  editarFormulario.style.display = "block";
 }
 
 // Función para ocultar el formulario de edición de cliente
