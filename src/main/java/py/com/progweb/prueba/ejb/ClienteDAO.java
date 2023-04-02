@@ -8,7 +8,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import java.util.List;
 
-import static py.com.progweb.prueba.utils.utils.sumarFechaDias;
+import static py.com.progweb.prueba.utils.Utils.sumarFechaDias;
 
 @Stateless
 public class ClienteDAO {
