@@ -14,6 +14,7 @@ const codeCliente = document.getElementById("code-cliente");
 
 cliente.addEventListener("submit", async (evento) => {
     evento.preventDefault();
+    codeCliente.innerHTML = ""
 
     let URL = `${API_URL}/cliente/buscar?`
 
@@ -39,6 +40,7 @@ cliente.addEventListener("submit", async (evento) => {
         });
         const data = await response.json();
         codeCliente.innerHTML = JSON.stringify(data, null, 2)
+        codeCliente.style.whiteSpace = "pre-wrap";
         return data;
     } catch (error) {
         console.error(error);
@@ -49,6 +51,7 @@ cliente.addEventListener("submit", async (evento) => {
 
 puntosVencer.addEventListener("submit", async (evento) => {
     evento.preventDefault();
+    codepuntosVencer.innerHTML = ""
 
     const dias = puntosVencer.dias.value
 
@@ -60,6 +63,7 @@ puntosVencer.addEventListener("submit", async (evento) => {
         });
         const data = await response.json();
         codepuntosVencer.innerHTML = JSON.stringify(data, null, 2)
+        codepuntosVencer.style.whiteSpace = "pre-wrap";
         return data;
     } catch (error) {
         console.error(error);
@@ -69,6 +73,7 @@ puntosVencer.addEventListener("submit", async (evento) => {
 
 buscarUsoPuntosForm.addEventListener("submit", async (evento) => {
     evento.preventDefault();
+    codeBuscarUsoPuntos.innerHTML = ""
 
     let URL = `${API_URL}/servicios/buscar?`
 
@@ -94,6 +99,7 @@ buscarUsoPuntosForm.addEventListener("submit", async (evento) => {
         });
         const data = await response.json();
         codeBuscarUsoPuntos.innerHTML = JSON.stringify(data, null, 2)
+        codeBuscarUsoPuntos.style.whiteSpace = "pre-wrap";
         return data;
     } catch (error) {
         console.error(error);
@@ -103,6 +109,7 @@ buscarUsoPuntosForm.addEventListener("submit", async (evento) => {
 
 buscarBolsaPuntos.addEventListener("submit", async (evento) => {
     evento.preventDefault();
+    codeBolsaPuntos.innerHTML = ""
 
     const idCliente = buscarBolsaPuntos.idCliente.value
     const minPuntos = buscarBolsaPuntos.minPuntos.value
@@ -124,6 +131,7 @@ buscarBolsaPuntos.addEventListener("submit", async (evento) => {
         });
         const data = await response.json();
         codeBolsaPuntos.innerHTML = JSON.stringify(data, null, 2)
+        codeBolsaPuntos.style.whiteSpace = "pre-wrap";
         return data;
     } catch (error) {
         console.error(error);

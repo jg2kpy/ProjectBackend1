@@ -29,6 +29,7 @@ async function cargarPuntos(regla) {
 
 formCargarPuntos.addEventListener("submit", async (evento) => {
     evento.preventDefault();
+    codeCargarPuntos.innerHTML = ""
 
     const cargaPunto = {
         idCliente: formCargarPuntos.idCliente.value,
@@ -40,6 +41,7 @@ formCargarPuntos.addEventListener("submit", async (evento) => {
     if (resultado) {
         formCargarPuntos.reset();
         codeCargarPuntos.innerHTML = JSON.stringify(resultado, null, 2)
+        codeCargarPuntos.style.whiteSpace = "pre-wrap";
     }
 });
 
@@ -63,6 +65,7 @@ async function usarPuntos(regla) {
 
 formUsarPuntos.addEventListener("submit", async (evento) => {
     evento.preventDefault();
+    codeUsarPuntos.innerHTML = ""
 
     const usarPunto = {
         idCliente: formUsarPuntos.idCliente.value,
@@ -74,12 +77,14 @@ formUsarPuntos.addEventListener("submit", async (evento) => {
     if (resultado) {
         formUsarPuntos.reset();
         codeUsarPuntos.innerHTML = JSON.stringify(resultado, null, 2)
+        codeUsarPuntos.style.whiteSpace = "pre-wrap";
     }
 });
 
 
 formConvertir.addEventListener("submit", async (evento) => {
     evento.preventDefault();
+    codeConvertir.innerHTML = ""
 
     const monto = formConvertir.monto.value
 
@@ -89,6 +94,7 @@ formConvertir.addEventListener("submit", async (evento) => {
         });
         const data = await response.json();
         codeConvertir.innerHTML = JSON.stringify(data, null, 2)
+        codeConvertir.style.whiteSpace = "pre-wrap";
         return data;
     } catch (error) {
         console.error(error);
