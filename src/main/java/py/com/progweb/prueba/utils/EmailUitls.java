@@ -2,17 +2,10 @@ package py.com.progweb.prueba.utils;
 
 import py.com.progweb.prueba.model.Cliente;
 import py.com.progweb.prueba.model.UsoPuntosCabecera;
-
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.Properties;
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
-import javax.mail.internet.MimeMultipart;
 import java.text.SimpleDateFormat;
 
 public class EmailUitls {
