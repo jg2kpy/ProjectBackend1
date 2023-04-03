@@ -1,7 +1,6 @@
 package py.com.progweb.prueba.utils;
 
 import py.com.progweb.prueba.ejb.BolsaPuntosDAO;
-import py.com.progweb.prueba.rest.ClienteRest;
 
 import javax.ejb.Schedule;
 import javax.ejb.Singleton;
