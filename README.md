@@ -56,6 +56,6 @@ WildFly: https://download.jboss.org/wildfly/18.0.1.Final/wildfly-18.0.1.Final.zi
 ### Variables de entorno
 Debemos poner en variables de entorno una direccion de email y su contraseña para poder usar el servicio de envio de correo electronico
 ```sh
-alias user=*usuario*
-alias pass=*contraseña*
+alias user="*usuario*"
+alias pass="*contraseña*"
 ```
