@@ -719,7 +719,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/prueba/cliente/?nombre=u&apellido=u&fechaNacimiento=08/06/2000",
+							"raw": "http://localhost:8080/prueba/cliente/buscar?nombre=u&apellido=u&fechaNacimiento=08/06/2000",
 							"protocol": "http",
 							"host": [
 								"localhost"

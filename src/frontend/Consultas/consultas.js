@@ -15,7 +15,7 @@ const codeCliente = document.getElementById("code-cliente");
 cliente.addEventListener("submit", async (evento) => {
     evento.preventDefault();
 
-    let URL = `${API_URL}/cliente/?`
+    let URL = `${API_URL}/cliente/buscar?`
 
     const nombre = cliente.nombre.value
     const apellido = cliente.apellido.value
