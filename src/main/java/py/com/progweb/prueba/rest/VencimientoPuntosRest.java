@@ -33,7 +33,7 @@ public class VencimientoPuntosRest {
     @Path("/")
     public Response agregar(VencimientoPuntos entidad) {
         vencimientoPuntosDAO.crearVencimientoPuntos(entidad);
-        LOGGER.info("Vencimiento agregado "+entidad);
+        LOGGER.info("Vencimiento agregado " + entidad);
         return Response.ok(entidad).build();
     }
 
@@ -48,7 +48,7 @@ public class VencimientoPuntosRest {
         } else {
             vencimientoPuntos.setIdVencimientoPuntos(id);
             vencimientoPuntosDAO.actualizarVencimientoPuntos(vencimientoPuntos);
-            LOGGER.info("Vencimiento actualizado "+vencimientoPuntos);
+            LOGGER.info("Vencimiento actualizado " + vencimientoPuntos);
             return Response.status(Response.Status.OK).build();
         }
     }
@@ -62,7 +62,7 @@ public class VencimientoPuntosRest {
             return Response.status(Response.Status.NOT_FOUND).build();
         } else {
             vencimientoPuntosDAO.eliminarVencimientoPuntos(vencimientoPuntosExistente);
-            LOGGER.info("Vencimiento actualizado "+vencimientoPuntosExistente);
+            LOGGER.info("Vencimiento actualizado " + vencimientoPuntosExistente);
             return Response.status(Response.Status.OK).build();
         }
     }
@@ -83,7 +83,7 @@ public class VencimientoPuntosRest {
             LOGGER.warning("Vencimiento no existe");
             return Response.status(Response.Status.NOT_FOUND).build();
         } else {
-            LOGGER.info("Vencimiento obtenido "+vencimientoPuntos);
+            LOGGER.info("Vencimiento obtenido " + vencimientoPuntos);
             return Response.ok(vencimientoPuntos).build();
         }
     }

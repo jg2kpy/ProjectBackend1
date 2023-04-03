@@ -33,7 +33,7 @@ public class ConceptoPuntosRest {
     @Path("/")
     public Response agregar(ConceptoPuntos entidad) {
         conceptoPuntoDAO.crearConceptoPunto(entidad);
-        LOGGER.info("Concepto agregado "+entidad);
+        LOGGER.info("Concepto agregado " + entidad);
         return Response.ok(entidad).build();
     }
 
@@ -48,7 +48,7 @@ public class ConceptoPuntosRest {
         } else {
             conceptoPunto.setIdConceptoPuntos(id);
             conceptoPuntoDAO.actualizarConceptoPunto(conceptoPunto);
-            LOGGER.info("Concepto actualizado "+conceptoPunto);
+            LOGGER.info("Concepto actualizado " + conceptoPunto);
             return Response.status(Response.Status.OK).build();
         }
     }
@@ -62,7 +62,7 @@ public class ConceptoPuntosRest {
             return Response.status(Response.Status.NOT_FOUND).build();
         } else {
             conceptoPuntoDAO.eliminarConceptoPunto(conceptoPuntoExistente);
-            LOGGER.info("Concepto actualizado "+conceptoPuntoExistente);
+            LOGGER.info("Concepto actualizado " + conceptoPuntoExistente);
             return Response.status(Response.Status.OK).build();
         }
     }
@@ -83,7 +83,7 @@ public class ConceptoPuntosRest {
             LOGGER.warning("Concepto no existe");
             return Response.status(Response.Status.NOT_FOUND).build();
         } else {
-            LOGGER.info("Concepto obtenido "+conceptoPunto);
+            LOGGER.info("Concepto obtenido " + conceptoPunto);
             return Response.ok(conceptoPunto).build();
         }
     }

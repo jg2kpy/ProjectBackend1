@@ -48,7 +48,7 @@ public class ServiciosRest {
     @Path("/carga-puntos")
     public Response cargaPuntos(BolsaPuntosDTO bolsaPuntosDTO) {
         BolsaPuntos retorno = bolsaPuntosDAO.cargarPuntos(bolsaPuntosDTO.idCliente, bolsaPuntosDTO.monto);
-        LOGGER.info("Bolsa agregada"+retorno);
+        LOGGER.info("Bolsa agregada" + retorno);
         return Response.ok(retorno).build();
     }
 
@@ -56,7 +56,7 @@ public class ServiciosRest {
     @Path("/uso-puntos")
     public Response usoPuntos(UsoPuntosDTO usoPuntosDTO) {
         UsoPuntosCabecera retorno = bolsaPuntosDAO.usarPuntos(usoPuntosDTO.idCliente, usoPuntosDTO.idConceptoPuntos);
-        LOGGER.info("Bolsa usada "+retorno);
+        LOGGER.info("Bolsa usada " + retorno);
         return Response.ok(Objects.requireNonNullElse(retorno, "{ \"mensaje\": \"El usuario no tiene saldo suficiente para aplicar a este concepto\" }")).build();
     }
 

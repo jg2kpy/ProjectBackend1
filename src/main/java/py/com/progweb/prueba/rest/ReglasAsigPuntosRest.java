@@ -33,7 +33,7 @@ public class ReglasAsigPuntosRest {
     @Path("/")
     public Response agregar(ReglasAsigPuntos entidad) {
         reglasAsigPuntosDAO.crearReglasAsigPuntos(entidad);
-        LOGGER.info("Regla agregada "+entidad);
+        LOGGER.info("Regla agregada " + entidad);
         return Response.ok(entidad).build();
     }
 
@@ -48,7 +48,7 @@ public class ReglasAsigPuntosRest {
         } else {
             reglasAsigPuntos.setIdReglasAsigPuntos(id);
             reglasAsigPuntosDAO.actualizarReglasAsigPuntos(reglasAsigPuntos);
-            LOGGER.info("Regla actualizado "+reglasAsigPuntos);
+            LOGGER.info("Regla actualizado " + reglasAsigPuntos);
             return Response.status(Response.Status.OK).build();
         }
     }
@@ -62,7 +62,7 @@ public class ReglasAsigPuntosRest {
             return Response.status(Response.Status.NOT_FOUND).build();
         } else {
             reglasAsigPuntosDAO.eliminarReglasAsigPuntos(reglasAsigPuntosExistente);
-            LOGGER.info("Regla eliminada "+reglasAsigPuntosExistente);
+            LOGGER.info("Regla eliminada " + reglasAsigPuntosExistente);
             return Response.status(Response.Status.OK).build();
         }
     }

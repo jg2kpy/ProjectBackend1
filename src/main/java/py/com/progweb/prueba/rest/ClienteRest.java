@@ -41,7 +41,7 @@ public class ClienteRest {
     @Path("/")
     public Response agregar(Cliente entidad) {
         clienteDAO.crearCliente(entidad);
-        LOGGER.info("Cliente agregado "+entidad);
+        LOGGER.info("Cliente agregado " + entidad);
         return Response.ok(entidad).build();
     }
 
@@ -56,7 +56,7 @@ public class ClienteRest {
         } else {
             cliente.setIdCliente(id);
             clienteDAO.actualizarCliente(cliente);
-            LOGGER.info("Cliente actualizado "+cliente);
+            LOGGER.info("Cliente actualizado " + cliente);
             return Response.status(Response.Status.OK).build();
         }
     }
@@ -70,7 +70,7 @@ public class ClienteRest {
             return Response.status(Response.Status.NOT_FOUND).build();
         } else {
             clienteDAO.eliminarCliente(clienteExistente);
-            LOGGER.info("Cliente eliminado "+clienteExistente);
+            LOGGER.info("Cliente eliminado " + clienteExistente);
             return Response.status(Response.Status.OK).build();
         }
     }
@@ -91,7 +91,7 @@ public class ClienteRest {
             LOGGER.warning("Cliente no existe");
             return Response.status(Response.Status.NOT_FOUND).build();
         } else {
-            LOGGER.info("Cliente obtenido "+cliente);
+            LOGGER.info("Cliente obtenido " + cliente);
             return Response.ok(cliente).build();
         }
     }

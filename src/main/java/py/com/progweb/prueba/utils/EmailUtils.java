@@ -57,7 +57,7 @@ public class EmailUtils {
         } catch (MessagingException e) {
             throw new RuntimeException(e);
         }
-        LOGGER.info("Correo enviado "+message);
+        LOGGER.info("Correo enviado " + message);
     }
 
     public static String getCuerpoEmail(Cliente cliente, UsoPuntosCabecera usoPuntosCabecera, int saldoRestanteCliente) {
