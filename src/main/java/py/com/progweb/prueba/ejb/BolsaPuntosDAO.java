@@ -1,7 +1,7 @@
 package py.com.progweb.prueba.ejb;
 
 import py.com.progweb.prueba.model.*;
-import py.com.progweb.prueba.utils.EmailUitls;
+import py.com.progweb.prueba.utils.EmailUtils;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -99,8 +99,8 @@ public class BolsaPuntosDAO {
             }
         }
 
-        String cuerpo = EmailUitls.getCuerpoEmail(cliente, usoPuntosCabecera, saldoRestanteCliente);
-        EmailUitls.enviarCorreo(System.getenv("user"), cliente.getEmail(), "Comprobante por uso de puntos", cuerpo);
+        String cuerpo = EmailUtils.getCuerpoEmail(cliente, usoPuntosCabecera, saldoRestanteCliente);
+        EmailUtils.enviarCorreo(System.getenv("user"), cliente.getEmail(), "Comprobante por uso de puntos", cuerpo);
 
         return usoPuntosCabecera;
     }
