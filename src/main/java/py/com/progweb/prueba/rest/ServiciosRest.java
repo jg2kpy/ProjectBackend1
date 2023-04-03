@@ -13,12 +13,15 @@ import javax.ws.rs.core.Response;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.logging.Logger;
 
 @Path("servicios")
 @Produces("application/json")
 @Consumes("application/json")
 @RequestScoped
 public class ServiciosRest {
+
+    private static final Logger LOGGER = Logger.getLogger(ServiciosRest.class.getName());
 
     @Inject
     BolsaPuntosDAO bolsaPuntosDAO;
@@ -45,6 +48,7 @@ public class ServiciosRest {
     @Path("/carga-puntos")
     public Response agregar(BolsaPuntosDTO bolsaPuntosDTO) {
         BolsaPuntos retorno = bolsaPuntosDAO.cargarPuntos(bolsaPuntosDTO.idCliente, bolsaPuntosDTO.monto);
+        LOGGER.info("Bolsa agregada"+retorno);
         return Response.ok(retorno).build();
     }
 
@@ -52,6 +56,7 @@ public class ServiciosRest {
     @Path("/uso-puntos")
     public Response agregar(UsoPuntosDTO usoPuntosDTO) {
         UsoPuntosCabecera retorno = bolsaPuntosDAO.usarPuntos(usoPuntosDTO.idCliente, usoPuntosDTO.idConceptoPuntos);
+        LOGGER.info("Bolsa usada "+retorno);
         return Response.ok(Objects.requireNonNullElse(retorno, "{ \"mensaje\": \"El usuario no tiene saldo suficiente para aplicar a este concepto\" }")).build();
     }
 

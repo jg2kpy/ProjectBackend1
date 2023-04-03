@@ -2,14 +2,19 @@ package py.com.progweb.prueba.utils;
 
 import py.com.progweb.prueba.model.Cliente;
 import py.com.progweb.prueba.model.UsoPuntosCabecera;
+import py.com.progweb.prueba.rest.ClienteRest;
 
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import java.text.SimpleDateFormat;
 import java.util.Properties;
+import java.util.logging.Logger;
 
 public class EmailUitls {
+
+    private static final Logger LOGGER = Logger.getLogger(EmailUitls.class.getName());
+
     private static Session session;
 
     public static Session getSession() {
@@ -53,6 +58,7 @@ public class EmailUitls {
         } catch (MessagingException e) {
             throw new RuntimeException(e);
         }
+        LOGGER.info("Correo enviado "+message);
     }
 
     public static String getCuerpoEmail(Cliente cliente, UsoPuntosCabecera usoPuntosCabecera, int saldoRestanteCliente) {
