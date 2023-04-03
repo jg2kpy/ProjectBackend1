@@ -17,35 +17,31 @@
    Actualizar repositorio
    
 ```sh
-    sudo apt update
+sudo apt update
 ```
 
    JDK 11
 ```sh
-    sudo apt install default-jdk
+sudo apt install default-jdk
 ```
 
    Maven
 ```sh
-    sudo apt install maven
+sudo apt install maven
 ```
 
    PostgreSQL
 ```sh
-    sudo apt install postgresql
+sudo apt install postgresql
 ```
 
 ### WindowsNT-based OS (Windows 10, Windows 11, etc)
     Usar los instaladores
    
-    JDK 11 por Oracle:
-    https://download.java.net/java/GA/jdk11/9/GPL/openjdk-11.0.2_windows-x64_bin.zip
+    JDK 11 por Oracle: https://download.java.net/java/GA/jdk11/9/GPL/openjdk-11.0.2_windows-x64_bin.zip
 
-    Maven por Apache:
-    https://dlcdn.apache.org/maven/maven-3/3.9.1/binaries/apache-maven-3.9.1-bin.zip
+    Maven por Apache: https://dlcdn.apache.org/maven/maven-3/3.9.1/binaries/apache-maven-3.9.1-bin.zip
    
-    WildFly por JBoss:
-    https://download.jboss.org/wildfly/18.0.1.Final/wildfly-18.0.1.Final.zip
+    WildFly por JBoss: https://download.jboss.org/wildfly/18.0.1.Final/wildfly-18.0.1.Final.zip
 
-    PostgreSQL:
-    https://www.enterprisedb.com/downloads/postgres-postgresql-downloads
+    PostgreSQL: https://www.enterprisedb.com/downloads/postgres-postgresql-downloads
