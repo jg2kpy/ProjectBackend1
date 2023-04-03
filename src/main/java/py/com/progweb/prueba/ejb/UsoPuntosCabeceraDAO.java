@@ -28,7 +28,7 @@ public class UsoPuntosCabeceraDAO {
     }
 
     public UsoPuntosCabecera buscarPorId(Integer id) {
-            return em.find(UsoPuntosCabecera.class, id);
+        return em.find(UsoPuntosCabecera.class, id);
     }
 
     public List<UsoPuntosCabecera> buscarPorIdConceptoPuntosFechaIdCliente(ConceptoPuntos idConceptoPuntos, Date fecha, Cliente idCliente) {
@@ -51,7 +51,7 @@ public class UsoPuntosCabeceraDAO {
         if (idConceptoPuntos != null) {
             query.setParameter("idConceptoPuntos", idConceptoPuntos);
         }
-        if (fecha != null ) {
+        if (fecha != null) {
             query.setParameter("fecha", fecha);
         }
         if (idCliente != null) {

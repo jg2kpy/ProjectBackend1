@@ -69,7 +69,7 @@ public class BolsaPuntosDAO {
         if (saldoTotal < puntajeDescontar) {
             return null;
         }
-        int saldoRestanteCliente = saldoTotal-puntajeDescontar;
+        int saldoRestanteCliente = saldoTotal - puntajeDescontar;
 
         UsoPuntosCabecera usoPuntosCabecera = new UsoPuntosCabecera();
         usoPuntosCabecera.setIdCliente(cliente);
@@ -82,7 +82,7 @@ public class BolsaPuntosDAO {
         for (BolsaPuntos bolsa : bolsas) {
             int saldoBolsa = bolsa.getSaldoPuntos();
             UsoPuntosDetalle usoPuntosDetalle;
-            if (saldoBolsa>0) {
+            if (saldoBolsa > 0) {
                 if (puntajeDescontar > saldoBolsa) {
                     puntajeDescontar -= saldoBolsa;
                     bolsa.setPuntajeUtilizado(bolsa.getPuntajeUtilizado() + saldoBolsa);
@@ -99,7 +99,7 @@ public class BolsaPuntosDAO {
             }
         }
 
-        String cuerpo = EmailUitls.getCuerpoEmail(cliente,usoPuntosCabecera,saldoRestanteCliente);
+        String cuerpo = EmailUitls.getCuerpoEmail(cliente, usoPuntosCabecera, saldoRestanteCliente);
         EmailUitls.enviarCorreo(System.getenv("user"), cliente.getEmail(), "Comprobante por uso de puntos", cuerpo);
 
         return usoPuntosCabecera;
@@ -116,7 +116,7 @@ public class BolsaPuntosDAO {
         Date fechaDeHoy = new Date();
 
         for (BolsaPuntos bolsa : bolsas) {
-            if (fechaDeHoy.after(bolsa.getFechaCaducidad())){
+            if (fechaDeHoy.after(bolsa.getFechaCaducidad())) {
                 bolsa.setSaldoPuntos(0);
             }
         }

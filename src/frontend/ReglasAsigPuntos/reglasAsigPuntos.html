@@ -1,74 +1,74 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8">
-  <title>CRUD de Reglas de asignación de Puntos</title>
-  <!-- <link rel="stylesheet" href="vencimiento.css"> -->
+    <meta charset="UTF-8">
+    <title>CRUD de Reglas de asignación de Puntos</title>
+    <!-- <link rel="stylesheet" href="vencimiento.css"> -->
 </head>
 <body>
 <div class="container">
-  <a href="../index.html" class="menu-btn">Menu</a>
-  <br>
+    <a class="menu-btn" href="../index.html">Menu</a>
+    <br>
 
-  <h1>CRUD de Reglas de asignación de Puntos</h1>
+    <h1>CRUD de Reglas de asignación de Puntos</h1>
 
-  <!-- Formulario para crear un nuevo vencimiento -->
-  <h2>Agregar nueva Regla de asignación</h2>
-  <form>
-    <div>
-      <label for="limiteInferior">Limite Inferior:</label>
-      <input type="number" id="limiteInferior" required>
-    </div>
-    <div>
-      <label for="limiteSuperior">Limite Superior:</label>
-      <input type="number" id="limiteSuperior" required>
-    </div>
-    <div>
-      <label for="montoEquivalencia">Monto de Equivalencia:</label>
-      <input type="number" id="montoEquivalencia" required>
-    </div>
-    <button type="submit">Agregar</button>
-  </form>
-
-  <!-- Tabla de vencimientos -->
-  <h2>Vencimientos de Puntos</h2>
-  <table>
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th>Limite Inferior</th>
-        <th>Limite Superior</th>
-        <th>Monto Equivalencia</th>
-        <th>Acciones</th>
-      </tr>
-    </thead>
-    <tbody id="tabla-body">
-      <!-- Los registros se agregarán aquí mediante JavaScript -->
-    </tbody>
-  </table>
-
-  <!-- Formulario para editar un vencimiento -->
-  <div id="editar-formulario" style="display: none;">
-    <h2>Editar Concepto</h2>
+    <!-- Formulario para crear un nuevo vencimiento -->
+    <h2>Agregar nueva Regla de asignación</h2>
     <form>
-      <div>
-        <label for="editar-id">ID:</label>
-        <input type="text" id="editar-id" readonly required>
-      </div>
-      <div>
-        <label for="editar-limiteInferior">Limite Inferior:</label>
-        <input type="number" id="editar-limiteInferior" required>
-      </div>
-      <div>
-        <label for="editar-limiteSuperior">Limite Superior:</label>
-        <input type="number" id="editar-limiteSuperior" required>
-      </div>
-      <div>
-        <label for="editar-montoEquivalencia">Monto de Equivalencia:</label>
-        <input type="number" id="editar-montoEquivalencia" required>
-      </div>
-      <button type="submit">Aplicar</button>
+        <div>
+            <label for="limiteInferior">Limite Inferior:</label>
+            <input id="limiteInferior" required type="number">
+        </div>
+        <div>
+            <label for="limiteSuperior">Limite Superior:</label>
+            <input id="limiteSuperior" required type="number">
+        </div>
+        <div>
+            <label for="montoEquivalencia">Monto de Equivalencia:</label>
+            <input id="montoEquivalencia" required type="number">
+        </div>
+        <button type="submit">Agregar</button>
     </form>
+
+    <!-- Tabla de vencimientos -->
+    <h2>Vencimientos de Puntos</h2>
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Limite Inferior</th>
+            <th>Limite Superior</th>
+            <th>Monto Equivalencia</th>
+            <th>Acciones</th>
+        </tr>
+        </thead>
+        <tbody id="tabla-body">
+        <!-- Los registros se agregarán aquí mediante JavaScript -->
+        </tbody>
+    </table>
+
+    <!-- Formulario para editar un vencimiento -->
+    <div id="editar-formulario" style="display: none;">
+        <h2>Editar Concepto</h2>
+        <form>
+            <div>
+                <label for="editar-id">ID:</label>
+                <input id="editar-id" readonly required type="text">
+            </div>
+            <div>
+                <label for="editar-limiteInferior">Limite Inferior:</label>
+                <input id="editar-limiteInferior" required type="number">
+            </div>
+            <div>
+                <label for="editar-limiteSuperior">Limite Superior:</label>
+                <input id="editar-limiteSuperior" required type="number">
+            </div>
+            <div>
+                <label for="editar-montoEquivalencia">Monto de Equivalencia:</label>
+                <input id="editar-montoEquivalencia" required type="number">
+            </div>
+            <button type="submit">Aplicar</button>
+        </form>
     </div>
 
     <!-- Formulario para eliminar un vencimiento -->

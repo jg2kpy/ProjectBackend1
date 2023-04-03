@@ -34,6 +34,13 @@ public class UsoPuntosCabecera {
 
     }
 
+    public UsoPuntosCabecera(Cliente idCliente, Integer puntajeUtilizado, Date fecha, ConceptoPuntos idConceptoPuntos) {
+        this.idCliente = idCliente;
+        this.puntajeUtilizado = puntajeUtilizado;
+        this.fecha = fecha;
+        this.idConceptoPuntos = idConceptoPuntos;
+    }
+
     @Override
     public String toString() {
         return "UsoPuntosCabecera{" +
@@ -43,13 +50,6 @@ public class UsoPuntosCabecera {
                 ", fecha=" + fecha +
                 ", idConceptoPuntos=" + idConceptoPuntos +
                 '}';
-    }
-
-    public UsoPuntosCabecera(Cliente idCliente, Integer puntajeUtilizado, Date fecha, ConceptoPuntos idConceptoPuntos) {
-        this.idCliente = idCliente;
-        this.puntajeUtilizado = puntajeUtilizado;
-        this.fecha = fecha;
-        this.idConceptoPuntos = idConceptoPuntos;
     }
 
     public Integer getIdUsoPuntosCabecera() {

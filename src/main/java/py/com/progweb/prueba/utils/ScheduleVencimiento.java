@@ -14,7 +14,7 @@ public class ScheduleVencimiento {
     //cada 3 horas
     //@Schedule(hour="*/3")
 
-    @Schedule(second="*/10", minute="*", hour="*")
+    @Schedule(second = "*/10", minute = "*", hour = "*")
     public void actualizarVencidos() {
         bolsaPuntosDAO.actualizarVencidos();
     }

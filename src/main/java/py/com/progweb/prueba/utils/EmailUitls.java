@@ -2,11 +2,12 @@ package py.com.progweb.prueba.utils;
 
 import py.com.progweb.prueba.model.Cliente;
 import py.com.progweb.prueba.model.UsoPuntosCabecera;
-import java.util.Properties;
+
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import java.text.SimpleDateFormat;
+import java.util.Properties;
 
 public class EmailUitls {
     private static Session session;
@@ -32,12 +33,14 @@ public class EmailUitls {
         }
         return session;
     }
+
     public static void enviarCorreo(String from, String to, String subject, String body) {
         new Thread(() -> {
-            enviarCorreoThread(from,to,subject,body);
+            enviarCorreoThread(from, to, subject, body);
         }).start();
     }
-    public static void enviarCorreoThread(String from, String to, String subject, String body){
+
+    public static void enviarCorreoThread(String from, String to, String subject, String body) {
         Session session = getSession();
         Message message = new MimeMessage(session);
         try {
@@ -55,11 +58,11 @@ public class EmailUitls {
     public static String getCuerpoEmail(Cliente cliente, UsoPuntosCabecera usoPuntosCabecera, int saldoRestanteCliente) {
         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
 
-        String retorno = "Hola "+cliente.getNombre()+
-                "<br><br> Se registró un uso de puntos el "+formatter.format(usoPuntosCabecera.getFecha())+
-                "<br><b>Concepto:</b> "+usoPuntosCabecera.getIdConceptoPuntos().getDescripcion()+
-                "<br><b>Puntos usados:</b> "+usoPuntosCabecera.getPuntajeUtilizado()+
-                "<br><br>Actualmente le quedan <b>"+saldoRestanteCliente+"</b> puntos";
+        String retorno = "Hola " + cliente.getNombre() +
+                "<br><br> Se registró un uso de puntos el " + formatter.format(usoPuntosCabecera.getFecha()) +
+                "<br><b>Concepto:</b> " + usoPuntosCabecera.getIdConceptoPuntos().getDescripcion() +
+                "<br><b>Puntos usados:</b> " + usoPuntosCabecera.getPuntajeUtilizado() +
+                "<br><br>Actualmente le quedan <b>" + saldoRestanteCliente + "</b> puntos";
         return "<html><body>" + retorno + "</body></html>";
     }
 }

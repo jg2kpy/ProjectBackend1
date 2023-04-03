@@ -11,8 +11,8 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.text.ParseException;
-import java.util.*;
 import java.text.SimpleDateFormat;
+import java.util.*;
 
 @Path("cliente")
 @Produces("application/json")
@@ -85,6 +85,7 @@ public class ClienteRest {
             return Response.ok(cliente).build();
         }
     }
+
     @GET
     @Path("/buscar")
     @Produces(MediaType.APPLICATION_JSON)
@@ -92,7 +93,7 @@ public class ClienteRest {
                                         @QueryParam("apellido") String apellido,
                                         @QueryParam("fechaNacimiento") String fechaNacimiento) throws ParseException {
         Date fecha = null;
-        if(fechaNacimiento != null) {
+        if (fechaNacimiento != null) {
             SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
             fecha = formatter.parse(fechaNacimiento);
         }

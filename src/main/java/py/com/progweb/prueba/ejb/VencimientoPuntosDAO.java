@@ -18,14 +18,16 @@ public class VencimientoPuntosDAO {
     private EntityManager em;
 
     public void crearVencimientoPuntos(VencimientoPuntos vencimientoPuntos) {
-        vencimientoPuntos.setFechaInicioValidez(sumarFechaDias(vencimientoPuntos.getFechaInicioValidez(),1));;
-        vencimientoPuntos.setFechaFinValidez(sumarFechaDias(vencimientoPuntos.getFechaFinValidez(),1));
+        vencimientoPuntos.setFechaInicioValidez(sumarFechaDias(vencimientoPuntos.getFechaInicioValidez(), 1));
+        ;
+        vencimientoPuntos.setFechaFinValidez(sumarFechaDias(vencimientoPuntos.getFechaFinValidez(), 1));
         em.persist(vencimientoPuntos);
     }
 
     public void actualizarVencimientoPuntos(VencimientoPuntos vencimientoPuntos) {
-        vencimientoPuntos.setFechaInicioValidez(sumarFechaDias(vencimientoPuntos.getFechaInicioValidez(),1));;
-        vencimientoPuntos.setFechaFinValidez(sumarFechaDias(vencimientoPuntos.getFechaFinValidez(),1));
+        vencimientoPuntos.setFechaInicioValidez(sumarFechaDias(vencimientoPuntos.getFechaInicioValidez(), 1));
+        ;
+        vencimientoPuntos.setFechaFinValidez(sumarFechaDias(vencimientoPuntos.getFechaFinValidez(), 1));
         em.merge(vencimientoPuntos);
     }
 

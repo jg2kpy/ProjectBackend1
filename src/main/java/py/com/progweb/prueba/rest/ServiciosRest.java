@@ -90,21 +90,21 @@ public class ServiciosRest {
         Date fechaDate = null;
         Cliente cliente = null;
 
-        if(idConceptoPuntos != null){
+        if (idConceptoPuntos != null) {
             conceptoPuntos = conceptoPuntosDAO.obtenerConceptoPuntoPorId(idConceptoPuntos);
-            if(conceptoPuntos == null) {
+            if (conceptoPuntos == null) {
                 return Response.ok("No existe el conceptoPuntos").build();
             }
         }
 
-        if(fecha != null){
+        if (fecha != null) {
             SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
             fechaDate = formatter.parse(fecha);
         }
 
-        if(idCliente != null){
+        if (idCliente != null) {
             cliente = clienteDAO.obtenerClientePorId(idCliente);
-            if(cliente == null) {
+            if (cliente == null) {
                 return Response.ok("No existe el cliente").build();
             }
         }
