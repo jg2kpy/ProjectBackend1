@@ -24,6 +24,7 @@ async function cargarPuntos(regla) {
     return data;
   } catch (error) {
     console.error(error);
+    return "error"
   }
 }
 
@@ -57,6 +58,7 @@ async function usarPuntos(regla) {
     return data;
   } catch (error) {
     console.error(error);
+    return "error"
   }
 }
 
@@ -92,5 +94,6 @@ formConvertir.addEventListener("submit", async (evento) => {
     return data;
   } catch (error) {
     console.error(error);
+    return "error"
   }
 });
