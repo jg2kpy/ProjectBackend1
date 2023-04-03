@@ -9,12 +9,15 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.List;
+import java.util.logging.Logger;
 
 @Path("reglas-asig-puntos")
 @Produces("application/json")
 @Consumes("application/json")
 @RequestScoped
 public class ReglasAsigPuntosRest {
+
+    private static final Logger LOGGER = Logger.getLogger(ReglasAsigPuntosRest.class.getName());
 
     @Inject
     ReglasAsigPuntosDAO reglasAsigPuntosDAO;
@@ -30,6 +33,7 @@ public class ReglasAsigPuntosRest {
     @Path("/")
     public Response agregar(ReglasAsigPuntos entidad) {
         reglasAsigPuntosDAO.crearReglasAsigPuntos(entidad);
+        LOGGER.info("Regla agregada "+entidad);
         return Response.ok(entidad).build();
     }
 
@@ -39,10 +43,12 @@ public class ReglasAsigPuntosRest {
     public Response actualizarReglasAsigPuntos(@PathParam("id") Integer id, ReglasAsigPuntos reglasAsigPuntos) {
         ReglasAsigPuntos reglasAsigPuntosExistente = reglasAsigPuntosDAO.obtenerReglasAsigPuntosPorId(id);
         if (reglasAsigPuntosExistente == null) {
+            LOGGER.warning("Regla no existe");
             return Response.status(Response.Status.NOT_FOUND).build();
         } else {
             reglasAsigPuntos.setIdReglasAsigPuntos(id);
             reglasAsigPuntosDAO.actualizarReglasAsigPuntos(reglasAsigPuntos);
+            LOGGER.info("Regla actualizado "+reglasAsigPuntos);
             return Response.status(Response.Status.OK).build();
         }
     }
@@ -52,9 +58,11 @@ public class ReglasAsigPuntosRest {
     public Response eliminarReglasAsigPuntos(@PathParam("id") Integer id) {
         ReglasAsigPuntos reglasAsigPuntosExistente = reglasAsigPuntosDAO.obtenerReglasAsigPuntosPorId(id);
         if (reglasAsigPuntosExistente == null) {
+            LOGGER.warning("Regla no existe");
             return Response.status(Response.Status.NOT_FOUND).build();
         } else {
             reglasAsigPuntosDAO.eliminarReglasAsigPuntos(reglasAsigPuntosExistente);
+            LOGGER.info("Regla eliminada "+reglasAsigPuntosExistente);
             return Response.status(Response.Status.OK).build();
         }
     }

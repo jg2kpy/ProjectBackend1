@@ -13,13 +13,15 @@ import javax.ws.rs.core.Response;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
-import java.text.SimpleDateFormat;
+import java.util.logging.Logger;
 
 @Path("servicios")
 @Produces("application/json")
 @Consumes("application/json")
 @RequestScoped
 public class ServiciosRest {
+
+    private static final Logger LOGGER = Logger.getLogger(ServiciosRest.class.getName());
 
     @Inject
     BolsaPuntosDAO bolsaPuntosDAO;
@@ -44,21 +46,23 @@ public class ServiciosRest {
 
     @POST
     @Path("/carga-puntos")
-    public Response agregar(BolsaPuntosDTO bolsaPuntosDTO) {
+    public Response cargaPuntos(BolsaPuntosDTO bolsaPuntosDTO) {
         BolsaPuntos retorno = bolsaPuntosDAO.cargarPuntos(bolsaPuntosDTO.idCliente, bolsaPuntosDTO.monto);
+        LOGGER.info("Bolsa agregada"+retorno);
         return Response.ok(retorno).build();
     }
 
     @POST
     @Path("/uso-puntos")
-    public Response agregar(UsoPuntosDTO usoPuntosDTO) {
+    public Response usoPuntos(UsoPuntosDTO usoPuntosDTO) {
         UsoPuntosCabecera retorno = bolsaPuntosDAO.usarPuntos(usoPuntosDTO.idCliente, usoPuntosDTO.idConceptoPuntos);
+        LOGGER.info("Bolsa usada "+retorno);
         return Response.ok(Objects.requireNonNullElse(retorno, "{ \"mensaje\": \"El usuario no tiene saldo suficiente para aplicar a este concepto\" }")).build();
     }
 
     @GET
     @Path("/conv-monto/{monto}")
-    public Response agregar(@PathParam("monto") Integer monto) {
+    public Response convMonto(@PathParam("monto") Integer monto) {
         return Response.ok(reglasAsigPuntosDAO.obtenerPuntosPorMonto(monto)).build();
     }
 
@@ -91,21 +95,21 @@ public class ServiciosRest {
         Date fechaDate = null;
         Cliente cliente = null;
 
-        if(idConceptoPuntos != null){
+        if (idConceptoPuntos != null) {
             conceptoPuntos = conceptoPuntosDAO.obtenerConceptoPuntoPorId(idConceptoPuntos);
-            if(conceptoPuntos == null) {
+            if (conceptoPuntos == null) {
                 return Response.ok("No existe el conceptoPuntos").build();
             }
         }
 
-        if(fecha != null){
+        if (fecha != null) {
             SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
             fechaDate = formatter.parse(fecha);
         }
 
-        if(idCliente != null){
+        if (idCliente != null) {
             cliente = clienteDAO.obtenerClientePorId(idCliente);
-            if(cliente == null) {
+            if (cliente == null) {
                 return Response.ok("No existe el cliente").build();
             }
         }

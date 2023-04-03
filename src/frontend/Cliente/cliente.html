@@ -1,119 +1,119 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8">
-  <title>CRUD de Clientes</title>
-  <!-- <link rel="stylesheet" href="cliente.css"> -->
+    <meta charset="UTF-8">
+    <title>CRUD de Clientes</title>
+    <!-- <link rel="stylesheet" href="cliente.css"> -->
 </head>
 <body>
 <div class="container">
-  <a href="../index.html" class="menu-btn">Menu</a>
-  <br>
+    <a class="menu-btn" href="../index.html">Menu</a>
+    <br>
 
-  <h1>CRUD de Clientes</h1>
+    <h1>CRUD de Clientes</h1>
 
-  <!-- Formulario para crear un nuevo cliente -->
-  <h2>Agregar Cliente</h2>
-  <form>
-    <div>
-      <label for="nombre">Nombre:</label>
-      <input type="text" id="nombre" required>
-    </div>
-    <div>
-      <label for="apellido">Apellido:</label>
-      <input type="text" id="apellido" required>
-    </div>
-    <div>
-      <label for="nroDocumento">Número de Documento:</label>
-      <input type="text" id="nroDocumento" required>
-    </div>
-    <div>
-      <label for="tipoDocumento">Tipo de Documento:</label>
-      <input type="text" id="tipoDocumento" required>
-    </div>
-    <div>
-      <label for="nacionalidad">Nacionalidad:</label>
-      <input type="text" id="nacionalidad" required>
-    </div>
-    <div>
-      <label for="email">Email:</label>
-      <input type="email" id="email" required>
-    </div>
-    <div>
-      <label for="telefono">Teléfono:</label>
-      <input type="text" id="telefono" required>
-    </div>
-    <div>
-      <label for="fechaNacimiento">Fecha de Nacimiento:</label>
-      <input type="date" id="fechaNacimiento" required>
-    </div>
-    <button type="submit">Agregar</button>
-  </form>
-
-  <!-- Tabla de clientes -->
-  <h2>Clientes</h2>
-  <table>
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th>Nombre</th>
-        <th>Apellido</th>
-        <th>Número de Documento</th>
-        <th>Tipo de Documento</th>
-        <th>Nacionalidad</th>
-        <th>Email</th>
-        <th>Teléfono</th>
-        <th>Fecha de Nacimiento</th>
-        <th>Acciones</th>
-      </tr>
-    </thead>
-    <tbody id="tabla-body">
-      <!-- Los registros se agregarán aquí mediante JavaScript -->
-    </tbody>
-  </table>
-
-  <!-- Formulario para editar un cliente -->
-  <div id="editar-formulario" style="display: none;">
-    <h2>Editar Cliente</h2>
+    <!-- Formulario para crear un nuevo cliente -->
+    <h2>Agregar Cliente</h2>
     <form>
-      <div>
-        <label for="editar-id">Id:</label>
-        <input type="text" id="editar-id" readonly required>
-      </div>
-      <div>
-        <label for="editar-nombre">Nombre:</label>
-        <input type="text" id="editar-nombre" required>
-      </div>
-      <div>
-        <label for="editar-apellido">Apellido:</label>
-        <input type="text" id="editar-apellido" required>
-      </div>
-      <div>
-        <label for="editar-nroDocumento">Número de Documento:</label>
-        <input type="text" id="editar-nroDocumento" required>
-      </div>
-      <div>
-        <label for="editar-tipoDocumento">Tipo de Documento:</label>
-        <input type="text" id="editar-tipoDocumento" required>
-      </div>
-      <div>
-        <label for="editar-nacionalidad">Nacionalidad:</label>
-        <input type="text" id="editar-nacionalidad" required>
+        <div>
+            <label for="nombre">Nombre:</label>
+            <input id="nombre" required type="text">
         </div>
         <div>
-            <label for="editar-email">Email:</label>
-            <input type="email" id="editar-email" required>
+            <label for="apellido">Apellido:</label>
+            <input id="apellido" required type="text">
         </div>
         <div>
-            <label for="editar-telefono">Teléfono:</label>
-            <input type="text" id="editar-telefono" required>
+            <label for="nroDocumento">Número de Documento:</label>
+            <input id="nroDocumento" required type="text">
         </div>
         <div>
-            <label for="editar-fechaNacimiento">Fecha de Nacimiento:</label>
-            <input type="date" id="editar-fechaNacimiento" required>
+            <label for="tipoDocumento">Tipo de Documento:</label>
+            <input id="tipoDocumento" required type="text">
         </div>
-        <button type="submit">Editar</button>
+        <div>
+            <label for="nacionalidad">Nacionalidad:</label>
+            <input id="nacionalidad" required type="text">
+        </div>
+        <div>
+            <label for="email">Email:</label>
+            <input id="email" required type="email">
+        </div>
+        <div>
+            <label for="telefono">Teléfono:</label>
+            <input id="telefono" required type="text">
+        </div>
+        <div>
+            <label for="fechaNacimiento">Fecha de Nacimiento:</label>
+            <input id="fechaNacimiento" required type="date">
+        </div>
+        <button type="submit">Agregar</button>
     </form>
+
+    <!-- Tabla de clientes -->
+    <h2>Clientes</h2>
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Número de Documento</th>
+            <th>Tipo de Documento</th>
+            <th>Nacionalidad</th>
+            <th>Email</th>
+            <th>Teléfono</th>
+            <th>Fecha de Nacimiento</th>
+            <th>Acciones</th>
+        </tr>
+        </thead>
+        <tbody id="tabla-body">
+        <!-- Los registros se agregarán aquí mediante JavaScript -->
+        </tbody>
+    </table>
+
+    <!-- Formulario para editar un cliente -->
+    <div id="editar-formulario" style="display: none;">
+        <h2>Editar Cliente</h2>
+        <form>
+            <div>
+                <label for="editar-id">Id:</label>
+                <input id="editar-id" readonly required type="text">
+            </div>
+            <div>
+                <label for="editar-nombre">Nombre:</label>
+                <input id="editar-nombre" required type="text">
+            </div>
+            <div>
+                <label for="editar-apellido">Apellido:</label>
+                <input id="editar-apellido" required type="text">
+            </div>
+            <div>
+                <label for="editar-nroDocumento">Número de Documento:</label>
+                <input id="editar-nroDocumento" required type="text">
+            </div>
+            <div>
+                <label for="editar-tipoDocumento">Tipo de Documento:</label>
+                <input id="editar-tipoDocumento" required type="text">
+            </div>
+            <div>
+                <label for="editar-nacionalidad">Nacionalidad:</label>
+                <input id="editar-nacionalidad" required type="text">
+            </div>
+            <div>
+                <label for="editar-email">Email:</label>
+                <input id="editar-email" required type="email">
+            </div>
+            <div>
+                <label for="editar-telefono">Teléfono:</label>
+                <input id="editar-telefono" required type="text">
+            </div>
+            <div>
+                <label for="editar-fechaNacimiento">Fecha de Nacimiento:</label>
+                <input id="editar-fechaNacimiento" required type="date">
+            </div>
+            <button type="submit">Aplicar</button>
+        </form>
     </div>
 
     <!-- Formulario para eliminar un cliente -->

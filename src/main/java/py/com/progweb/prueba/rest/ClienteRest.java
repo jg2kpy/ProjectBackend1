@@ -11,14 +11,17 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.text.ParseException;
-import java.util.*;
 import java.text.SimpleDateFormat;
+import java.util.*;
+import java.util.logging.Logger;
 
 @Path("cliente")
 @Produces("application/json")
 @Consumes("application/json")
 @RequestScoped
 public class ClienteRest {
+
+    private static final Logger LOGGER = Logger.getLogger(ClienteRest.class.getName());
 
     @Inject
     ClienteDAO clienteDAO;
@@ -38,6 +41,7 @@ public class ClienteRest {
     @Path("/")
     public Response agregar(Cliente entidad) {
         clienteDAO.crearCliente(entidad);
+        LOGGER.info("Cliente agregado "+entidad);
         return Response.ok(entidad).build();
     }
 
@@ -47,10 +51,12 @@ public class ClienteRest {
     public Response actualizarCliente(@PathParam("id") Integer id, Cliente cliente) {
         Cliente clienteExistente = clienteDAO.obtenerClientePorId(id);
         if (clienteExistente == null) {
+            LOGGER.warning("Cliente no existe");
             return Response.status(Response.Status.NOT_FOUND).build();
         } else {
             cliente.setIdCliente(id);
             clienteDAO.actualizarCliente(cliente);
+            LOGGER.info("Cliente actualizado "+cliente);
             return Response.status(Response.Status.OK).build();
         }
     }
@@ -60,9 +66,11 @@ public class ClienteRest {
     public Response eliminarCliente(@PathParam("id") Integer id) {
         Cliente clienteExistente = clienteDAO.obtenerClientePorId(id);
         if (clienteExistente == null) {
+            LOGGER.warning("Cliente no existe");
             return Response.status(Response.Status.NOT_FOUND).build();
         } else {
             clienteDAO.eliminarCliente(clienteExistente);
+            LOGGER.info("Cliente eliminado "+clienteExistente);
             return Response.status(Response.Status.OK).build();
         }
     }
@@ -80,11 +88,14 @@ public class ClienteRest {
     public Response obtenerClientePorId(@PathParam("id") Integer id) {
         Cliente cliente = clienteDAO.obtenerClientePorId(id);
         if (cliente == null) {
+            LOGGER.warning("Cliente no existe");
             return Response.status(Response.Status.NOT_FOUND).build();
         } else {
+            LOGGER.info("Cliente obtenido "+cliente);
             return Response.ok(cliente).build();
         }
     }
+
     @GET
     @Path("/buscar")
     @Produces(MediaType.APPLICATION_JSON)
@@ -92,7 +103,7 @@ public class ClienteRest {
                                         @QueryParam("apellido") String apellido,
                                         @QueryParam("fechaNacimiento") String fechaNacimiento) throws ParseException {
         Date fecha = null;
-        if(fechaNacimiento != null) {
+        if (fechaNacimiento != null) {
             SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
             fecha = formatter.parse(fechaNacimiento);
         }

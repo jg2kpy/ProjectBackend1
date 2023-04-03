@@ -1,16 +1,11 @@
 package py.com.progweb.prueba.ejb;
 
-import py.com.progweb.prueba.model.Cliente;
 import py.com.progweb.prueba.model.ConceptoPuntos;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
-import javax.persistence.TypedQuery;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Root;
 import java.util.List;
 
 @Stateless

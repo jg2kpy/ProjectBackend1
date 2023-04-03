@@ -7,11 +7,9 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
-import java.text.SimpleDateFormat;
-import java.util.List;
 import java.util.ArrayList;
 import java.util.Date;
-
+import java.util.List;
 
 import static py.com.progweb.prueba.utils.Utils.sumarFechaDias;
 
@@ -23,12 +21,12 @@ public class ClienteDAO {
     //eesta anotacion es cuando requerimos que sea atomico el metodo
     //@TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
     public void crearCliente(Cliente cliente) {
-        cliente.setFechaNacimiento(sumarFechaDias(cliente.getFechaNacimiento(),1));
+        cliente.setFechaNacimiento(sumarFechaDias(cliente.getFechaNacimiento(), 1));
         em.persist(cliente);
     }
 
     public void actualizarCliente(Cliente cliente) {
-        cliente.setFechaNacimiento(sumarFechaDias(cliente.getFechaNacimiento(),1));
+        cliente.setFechaNacimiento(sumarFechaDias(cliente.getFechaNacimiento(), 1));
         em.merge(cliente);
     }
 

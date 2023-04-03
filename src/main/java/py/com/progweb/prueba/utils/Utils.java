@@ -4,7 +4,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 public class Utils {
-    static public Date sumarFechaDias(Date Fecha, int dias){
+    static public Date sumarFechaDias(Date Fecha, int dias) {
         Calendar calendario = Calendar.getInstance();
         calendario.setTime(Fecha);
         calendario.add(Calendar.DATE, dias);
