@@ -122,4 +122,44 @@ public class BolsaPuntosDAO {
         }
 
     }
+
+    public List<BolsaPuntos> obtenerBolsasConFechaCaducidadEnRango(Date fechaInicio, Date fechaFin) {
+        System.out.println(fechaInicio);
+        System.out.println(fechaFin);
+        System.out.println(em);
+        Query query = em.createQuery("SELECT b FROM BolsaPuntos b WHERE b.fechaCaducidad BETWEEN :fechaInicio AND :fechaFin");
+        query.setParameter("fechaInicio", fechaInicio);
+        query.setParameter("fechaFin", fechaFin);
+        List<BolsaPuntos> bolsas = query.getResultList();
+        return bolsas;
+    }
+
+    public List<BolsaPuntos> obtenerBolsasPorClienteYRangoDePuntos(int idCliente, int minPuntos, int maxPuntos) {
+
+        String queryString = "SELECT b FROM BolsaPuntos b WHERE";
+        if (idCliente >= 0) {
+            queryString += " b.idCliente.idCliente = :idCliente";
+        }
+        if (minPuntos >= 0 && idCliente >= 0) {
+            queryString += " AND b.saldoPuntos >= :minPuntos";
+        }
+        if (minPuntos >= 0 && idCliente < 0) {
+            queryString += " b.saldoPuntos >= :minPuntos";
+        }
+        if (maxPuntos >= 0) {
+            queryString += " AND b.saldoPuntos <= :maxPuntos";
+        }
+        Query query = em.createQuery(queryString);
+        if (idCliente >= 0) {
+            query.setParameter("idCliente", idCliente);
+        }
+        if (minPuntos >= 0) {
+            query.setParameter("minPuntos", minPuntos);
+        }
+        if (maxPuntos >= 0) {
+            query.setParameter("maxPuntos", maxPuntos);
+        }
+        return query.getResultList();
+
+    }
 }
