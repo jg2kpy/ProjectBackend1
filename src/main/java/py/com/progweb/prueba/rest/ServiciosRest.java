@@ -46,7 +46,7 @@ public class ServiciosRest {
 
     @POST
     @Path("/carga-puntos")
-    public Response agregar(BolsaPuntosDTO bolsaPuntosDTO) {
+    public Response cargaPuntos(BolsaPuntosDTO bolsaPuntosDTO) {
         BolsaPuntos retorno = bolsaPuntosDAO.cargarPuntos(bolsaPuntosDTO.idCliente, bolsaPuntosDTO.monto);
         LOGGER.info("Bolsa agregada"+retorno);
         return Response.ok(retorno).build();
@@ -54,7 +54,7 @@ public class ServiciosRest {
 
     @POST
     @Path("/uso-puntos")
-    public Response agregar(UsoPuntosDTO usoPuntosDTO) {
+    public Response usoPuntos(UsoPuntosDTO usoPuntosDTO) {
         UsoPuntosCabecera retorno = bolsaPuntosDAO.usarPuntos(usoPuntosDTO.idCliente, usoPuntosDTO.idConceptoPuntos);
         LOGGER.info("Bolsa usada "+retorno);
         return Response.ok(Objects.requireNonNullElse(retorno, "{ \"mensaje\": \"El usuario no tiene saldo suficiente para aplicar a este concepto\" }")).build();
@@ -62,7 +62,7 @@ public class ServiciosRest {
 
     @GET
     @Path("/conv-monto/{monto}")
-    public Response agregar(@PathParam("monto") Integer monto) {
+    public Response convMonto(@PathParam("monto") Integer monto) {
         return Response.ok(reglasAsigPuntosDAO.obtenerPuntosPorMonto(monto)).build();
     }
 
