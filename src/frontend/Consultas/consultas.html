@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Consultas</title>
+  <!-- <link rel="stylesheet" href="vencimiento.css"> -->
+</head>
+
+<body>
+  <div class="container">
+    <a href="../index.html" class="menu-btn">Menu</a>
+    <br>
+
+    <h1>Consultas</h1>
+
+    <h2>Buscar por uso de puntos</h2>
+    <form id="buscar-uso-puntos">
+      <div>
+        <label for="idConceptoPuntos">Concepto:</label>
+        <input type="number" id="idConceptoPuntos">
+      </div>
+      <div>
+        <label for="idCliente">ID Cliente:</label>
+        <input type="number" id="idCliente">
+      </div>
+      <div>
+        <label for="fecha">Fecha:</label>
+        <input type="date" id="fecha">
+      </div>
+      <button type="submit">Buscar</button>
+    </form>
+
+    <br>
+    <code id="code-buscar-uso-puntos"></code>
+
+    <h2>Bolsa de puntos</h2>
+    <form id="bolsa-puntos">
+      <div>
+        <label for="idCliente">ID Cliente:</label>
+        <input type="number" id="idCliente" required>
+      </div>
+      <div>
+        <label for="minPuntos">Min Puntos:</label>
+        <input type="number" id="minPuntos" required>
+      </div>
+      <div>
+        <label for="maxPuntos">Max Puntos:</label>
+        <input type="number" id="maxPuntos" required>
+      </div>
+      <button type="submit">Buscar</button>
+    </form>
+
+    <br>
+    <code id="code-bolsa-puntos"></code>
+
+    <h2>Clientes con puntos a vencer</h2>
+    <form id="puntos-vencer">
+      <div>
+        <label for="dias">Dias:</label>
+        <input type="number" id="dias" required>
+      </div>
+      <button type="submit">Buscar</button>
+    </form>
+
+    <br>
+    <code id="code-puntos-vencer"></code>
+
+    <h2>Consulta de Cliente</h2>
+    <form id="cliente">
+      <div>
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre">
+      </div>
+      <div>
+        <label for="apellido">Apellido:</label>
+        <input type="text" id="apellido">
+      </div>
+      <div>
+        <label for="fechaNacimiento">Fecha de Nacimiento:</label>
+        <input type="date" id="fechaNacimiento">
+      </div>
+      <button type="submit">Buscar</button>
+    </form>
+
+    <br>
+    <code id="code-cliente"></code>
+
+    <script src="consultas.js"></script>
+
+</body>
