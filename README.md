@@ -35,7 +35,7 @@ sudo apt install maven
 sudo apt install postgresql
 ```
 
-   PostgreSQL
+   WildFly
 ```sh
 wget https://download.jboss.org/wildfly/18.0.1.Final/wildfly-18.0.1.Final.zip
 ```
