@@ -35,7 +35,10 @@ sudo apt install maven
 sudo apt install postgresql
 ```
 
-WildFly: https://download.jboss.org/wildfly/18.0.1.Final/wildfly-18.0.1.Final.zip
+   PostgreSQL
+```sh
+wget https://download.jboss.org/wildfly/18.0.1.Final/wildfly-18.0.1.Final.zip
+```
 
 Si no queremos instalar PostgreSQL entonces podemos usar docker
 ```sh
