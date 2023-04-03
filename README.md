@@ -36,12 +36,12 @@ sudo apt install postgresql
 ```
 
 ### WindowsNT-based OS (Windows 10, Windows 11, etc)
-    Usar los instaladores
-   
-    JDK 11 por Oracle: https://download.java.net/java/GA/jdk11/9/GPL/openjdk-11.0.2_windows-x64_bin.zip
+Usar los instaladores
 
-    Maven por Apache: https://dlcdn.apache.org/maven/maven-3/3.9.1/binaries/apache-maven-3.9.1-bin.zip
-   
-    WildFly por JBoss: https://download.jboss.org/wildfly/18.0.1.Final/wildfly-18.0.1.Final.zip
+JDK 11 por Oracle: https://download.java.net/java/GA/jdk11/9/GPL/openjdk-11.0.2_windows-x64_bin.zip
 
-    PostgreSQL: https://www.enterprisedb.com/downloads/postgres-postgresql-downloads
+Maven por Apache: https://dlcdn.apache.org/maven/maven-3/3.9.1/binaries/apache-maven-3.9.1-bin.zip
+
+WildFly por JBoss: https://download.jboss.org/wildfly/18.0.1.Final/wildfly-18.0.1.Final.zip
+
+PostgreSQL: https://www.enterprisedb.com/downloads/postgres-postgresql-downloads
