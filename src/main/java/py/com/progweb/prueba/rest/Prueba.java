@@ -14,6 +14,6 @@ public class Prueba {
     @GET
     @Path("/")
     public String PruebaFn() {
-        return "prueba XDDDDDDDDdDDDDDDDD";
+        return "Sistema de fidelización de clientes.";
     }
 }
