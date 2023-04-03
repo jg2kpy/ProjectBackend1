@@ -8,7 +8,6 @@ import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -133,5 +132,34 @@ public class BolsaPuntosDAO {
         query.setParameter("fechaFin", fechaFin);
         List<BolsaPuntos> bolsas = query.getResultList();
         return bolsas;
+    }
+
+    public List<BolsaPuntos> obtenerBolsasPorClienteYRangoDePuntos(int idCliente, int minPuntos, int maxPuntos) {
+
+        String queryString = "SELECT b FROM BolsaPuntos b WHERE";
+        if (idCliente >= 0) {
+            queryString += " b.idCliente.idCliente = :idCliente";
+        }
+        if (minPuntos >= 0 && idCliente >= 0) {
+            queryString += " AND b.saldoPuntos >= :minPuntos";
+        }
+        if (minPuntos >= 0 && idCliente < 0) {
+            queryString += " b.saldoPuntos >= :minPuntos";
+        }
+        if (maxPuntos >= 0) {
+            queryString += " AND b.saldoPuntos <= :maxPuntos";
+        }
+        Query query = em.createQuery(queryString);
+        if (idCliente >= 0) {
+            query.setParameter("idCliente", idCliente);
+        }
+        if (minPuntos >= 0) {
+            query.setParameter("minPuntos", minPuntos);
+        }
+        if (maxPuntos >= 0) {
+            query.setParameter("maxPuntos", maxPuntos);
+        }
+        return query.getResultList();
+
     }
 }

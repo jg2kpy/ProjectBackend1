@@ -116,5 +116,27 @@ public class ClienteRest {
         return new ArrayList<>(clientesConPuntosAVencer);
     }
 
+    @GET
+    @Path("/bolsa-puntos/{idCliente}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response obtenerBolsasPorCliente(@PathParam("idCliente") int idCliente) {
+        List<BolsaPuntos> bolsas = bolsaPuntosDAO.obtenerBolsasPorClienteYRangoDePuntos(idCliente, -1, -1);
+        return Response.ok(bolsas).build();
+    }
 
+    @GET
+    @Path("/bolsa-puntos/rango")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response obtenerBolsasPorRangoDePuntos(@QueryParam("minPuntos") int minPuntos, @QueryParam("maxPuntos") int maxPuntos) {
+        List<BolsaPuntos> bolsas = bolsaPuntosDAO.obtenerBolsasPorClienteYRangoDePuntos(-1, minPuntos, maxPuntos);
+        return Response.ok(bolsas).build();
+    }
+
+    @GET
+    @Path("/bolsa-puntos/{idCliente}/rango")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response obtenerBolsasPorClienteYRangoDePuntos(@PathParam("idCliente") int idCliente, @QueryParam("minPuntos") int minPuntos, @QueryParam("maxPuntos") int maxPuntos) {
+        List<BolsaPuntos> bolsas = bolsaPuntosDAO.obtenerBolsasPorClienteYRangoDePuntos(idCliente, minPuntos, maxPuntos);
+        return Response.ok(bolsas).build();
+    }
 }

@@ -2,16 +2,18 @@ package py.com.progweb.prueba.rest;
 
 import py.com.progweb.prueba.DTO.BolsaPuntosDTO;
 import py.com.progweb.prueba.DTO.UsoPuntosDTO;
-import py.com.progweb.prueba.ejb.BolsaPuntosDAO;
-import py.com.progweb.prueba.ejb.ReglasAsigPuntosDAO;
-import py.com.progweb.prueba.model.BolsaPuntos;
-import py.com.progweb.prueba.model.UsoPuntosCabecera;
+import py.com.progweb.prueba.ejb.*;
+import py.com.progweb.prueba.model.*;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.ws.rs.*;
+import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import java.util.Objects;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.*;
+import java.text.SimpleDateFormat;
 
 @Path("servicios")
 @Produces("application/json")
@@ -24,6 +26,15 @@ public class ServiciosRest {
 
     @Inject
     ReglasAsigPuntosDAO reglasAsigPuntosDAO;
+    @Inject
+    private UsoPuntosCabeceraDAO usoPuntosCabeceraDAO;
+
+    @Inject
+    private ConceptoPuntosDAO conceptoPuntosDAO;
+
+    @Inject
+    private ClienteDAO clienteDAO;
+
 
     @GET
     @Path("saludo")
@@ -49,6 +60,74 @@ public class ServiciosRest {
     @Path("/conv-monto/{monto}")
     public Response agregar(@PathParam("monto") Integer monto) {
         return Response.ok(reglasAsigPuntosDAO.obtenerPuntosPorMonto(monto)).build();
+    }
+
+    @GET
+    @Path("/usopuntos/cabecera/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response obtenerUsoPuntosConDetalles(@PathParam("id") Integer idCabecera) {
+        UsoPuntosCabecera cabecera = usoPuntosCabeceraDAO.buscarPorId(idCabecera);
+        if (cabecera == null) {
+            return Response.status(Response.Status.NOT_FOUND).build();
+        }
+        List<UsoPuntosDetalle> detalles = usoPuntosCabeceraDAO.obtenerDetallesPorCabecera(cabecera);
+
+        Response.ResponseBuilder responseBuilder = Response.ok(cabecera);
+        Map<String, Object> responseMap = new HashMap<>();
+        responseMap.put("cabecera", cabecera);
+        responseMap.put("detalles", detalles);
+        responseBuilder.entity(responseMap);
+        return responseBuilder.build();
+    }
+
+
+    @GET
+    @Path("/buscar")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response buscarPorIdConceptoPuntosFechaIdCliente(@QueryParam("idConceptoPuntos") Integer idConceptoPuntos,
+                                                            @QueryParam("fecha") String fecha,
+                                                            @QueryParam("idCliente") Integer idCliente) throws ParseException {
+        ConceptoPuntos conceptoPuntos = null;
+        Date fechaDate = null;
+        Cliente cliente = null;
+
+        if(idConceptoPuntos != null){
+            conceptoPuntos = conceptoPuntosDAO.obtenerConceptoPuntoPorId(idConceptoPuntos);
+            if(conceptoPuntos == null) {
+                return Response.ok("No existe el conceptoPuntos").build();
+            }
+        }
+
+        if(fecha != null){
+            SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+            fechaDate = formatter.parse(fecha);
+        }
+
+        if(idCliente != null){
+            cliente = clienteDAO.obtenerClientePorId(idCliente);
+            if(cliente == null) {
+                return Response.ok("No existe el cliente").build();
+            }
+        }
+
+        List<UsoPuntosCabecera> cabeceras = usoPuntosCabeceraDAO.buscarPorIdConceptoPuntosFechaIdCliente(conceptoPuntos, fechaDate, cliente);
+        List<Map<String, Object>> resultado = new ArrayList<>();
+
+        for (UsoPuntosCabecera cabecera : cabeceras) {
+            List<UsoPuntosDetalle> detalles = usoPuntosCabeceraDAO.obtenerDetallesPorCabecera(cabecera);
+
+            Map<String, Object> mapaCabecera = new HashMap<>();
+            mapaCabecera.put("idUsoPuntosCabecera", cabecera.getIdUsoPuntosCabecera());
+            mapaCabecera.put("fecha", cabecera.getFecha());
+            mapaCabecera.put("idCliente", cabecera.getIdCliente());
+            mapaCabecera.put("idConceptoPuntos", cabecera.getIdConceptoPuntos());
+            mapaCabecera.put("puntajeUtilizado", cabecera.getPuntajeUtilizado());
+            mapaCabecera.put("detalles", detalles);
+
+            resultado.add(mapaCabecera);
+        }
+
+        return Response.ok(resultado).build();
     }
 
 }
